@@ -79,13 +79,11 @@ import { mapState } from 'vuex'
 import { settings as api } from '@/api'
 import UserForm from '@/components/settings/UserForm'
 import Rules from '@/components/settings/Rules'
-import Themes from '@/components/settings/Themes'
 import { enableExec } from '@/utils/constants'
 
 export default {
   name: 'settings',
   components: {
-    Themes,
     UserForm,
     Rules
   },
