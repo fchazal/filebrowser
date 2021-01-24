@@ -7,7 +7,7 @@
 
       <template v-if="!isMobile">
         <img :src="logoURL" :alt="name">
-        <h2 v-if="!isMobile">{{ name }}</h2>
+        <h2>{{ name }}</h2>
       </template>
     </div>
 
@@ -32,7 +32,7 @@
 
 <script>
 //import Search from './Search'
-import {mapGetters, mapState} from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import { name, logoURL } from '@/utils/constants'
 import * as auth from '@/utils/auth'
 import { authMethod } from '@/utils/constants'
@@ -42,11 +42,9 @@ export default {
   components: {
 //    Search,
   },
-  data: function () {
-    return {
-      width: window.innerWidth
-    }
-  },
+  data: () => { return {
+    'width': window.innerWidth
+  }},
   created () {
     window.addEventListener('resize', () => {
       this.width = window.innerWidth
@@ -72,9 +70,9 @@ export default {
     authMethod: () => authMethod,
     name: () => name,
     logoURL: () => logoURL,
-    isMobile () {
+    isMobile() {
       return this.width <= 736
-    },
+    }
   },
   methods: {
     openSidebar () {

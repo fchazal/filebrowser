@@ -10,6 +10,9 @@
 @import "./fonts.css";
 @import "./base.css";
 @import "./header.css";
+@import "./sidebar.css";
+
+
 @import "./listing.css";
 @import "./settings.css";
 @import "./login.css";

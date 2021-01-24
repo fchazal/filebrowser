@@ -15,6 +15,12 @@ const enableThumbs = window.FileBrowser.EnableThumbs
 const resizePreview = window.FileBrowser.ResizePreview
 const enableExec = window.FileBrowser.EnableExec
 
+var isMobileF = window.innerWidth
+
+window.addEventListener('resize', () => {
+  isMobileF = window.innerWidth
+})
+
 export {
   name,
   disableExternal,
@@ -30,5 +36,6 @@ export {
   theme,
   enableThumbs,
   resizePreview,
-  enableExec
+  enableExec,
+  isMobileF
 }

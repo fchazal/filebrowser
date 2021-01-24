@@ -1,0 +1,35 @@
+@import 'colors';
+
+nav#sidebar {
+  width: 240px;
+  position: fixed;
+  left: 0;
+
+  padding-top: 0.5em;
+  top: 4.5em;
+
+	.action {
+		display: flex;
+		align-items: center;
+
+		font-size: 1em;
+		padding: 0 .5em;
+		
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		
+		border-radius: 0 2em 2em 0;
+		
+		&:hover {
+			color: $accent-color;
+			background-color: rgba($accent-color,0.1);
+		}
+	}
+
+	>div.separator {
+		border-top: 1px solid $border-color;
+		margin: 0.5em 0;
+	}
+}
+

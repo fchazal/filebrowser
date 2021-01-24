@@ -1,6 +1,6 @@
 <template>
-  <nav :class="{active}">
-    <template v-if="isLogged">
+  <nav id="sidebar" :class="{active}">
+    <template v-if="isLogged && !isSharing && !isMobile">
       <router-link class="action" to="/files/" :aria-label="$t('sidebar.home')" :title="$t('sidebar.home')">
         <i class="material-icons">cloud</i>
         <span>{{ $t('sidebar.home') }}</span>
@@ -29,18 +29,6 @@
         <span>{{$t('sidebar.users')}}</span>
       </router-link>
     </template>
-
-    <template v-else>
-      <router-link class="action" to="/login" :aria-label="$t('sidebar.login')" :title="$t('sidebar.login')">
-        <i class="material-icons">exit_to_app</i>
-        <span>{{ $t('sidebar.login') }}</span>
-      </router-link>
-
-      <router-link v-if="signup" class="action" to="/login" :aria-label="$t('sidebar.signup')" :title="$t('sidebar.signup')">
-        <i class="material-icons">person_add</i>
-        <span>{{ $t('sidebar.signup') }}</span>
-      </router-link>
-    </template>
   </nav>
 </template>
 
@@ -50,9 +38,20 @@ import { version, signup, disableExternal, noAuth, authMethod } from '@/utils/co
 
 export default {
   name: 'sidebar',
+  data: () => { return {
+    'width': window.innerWidth
+  }},
+  created () {
+    window.addEventListener('resize', () => {
+      this.width = window.innerWidth
+    })
+  },
   computed: {
     ...mapState([ 'user' ]),
-    ...mapGetters([ 'isLogged' ]),
+    ...mapGetters([
+      'isLogged',
+      'isSharing'
+    ]),
     active () {
       return this.$store.state.show === 'sidebar'
     },
@@ -60,9 +59,13 @@ export default {
     version: () => version,
     disableExternal: () => disableExternal,
     noAuth: () => noAuth,
-    authMethod: () => authMethod
+    authMethod: () => authMethod,
+    isMobile() {
+      return this.width <= 736
+    }
   },
   methods: {
+
   }
 }
 </script>

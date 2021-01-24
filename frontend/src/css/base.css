@@ -60,41 +60,6 @@ i.spin {
   padding-bottom: 4em;
 }
 
-nav {
-  width: 240px;
-  position: fixed;
-  left: 0;
-
-  padding-top: 0.5em;
-  top: 4.5em;
-}
-
-nav .action {
-  width: 100%;
-  display: block;
-  border-radius: 0 2em 2em 0;
-  font-size: 1.1em;
-  padding: 0 .5em;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  font-size: 1em;
-}
-
-nav .action:hover {
-  color: #58d;
-  background-color: #58d2;
-}
-
-nav>div.separator {
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  margin: 0.5em 0;
-}
-
-nav .action>* {
-  vertical-align: middle;
-}
 
 main {
   min-height: 1em;
