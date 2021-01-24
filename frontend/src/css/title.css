@@ -1,0 +1,72 @@
+#title {
+	position: fixed;
+	top: 4.5em;
+	width: calc(100% - 250px);
+	background: #fff;
+	z-index: 999;
+	height: 4.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#title div.separator {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0 0.5em;
+  height: 2em;
+}
+
+#title>h2,
+#title>#breadcrumbs {
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+#title>#breadcrumbs span,
+#title>#breadcrumbs,
+#title>#actions,
+#title {
+  display: flex;
+  align-items: center;
+}
+
+#title>#breadcrumbs a {
+  color: inherit;
+  transition: .1s ease-in;
+  border-radius: .125em;
+}
+
+#title>#breadcrumbs a:hover {
+  background-color: rgba(0,0,0, 0.05);
+}
+
+#title>#breadcrumbs span a {
+  padding: .2em;
+}
+
+#title>#breadcrumbs>div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  align-items: center;
+  padding: .5em .5em .5em 1em;
+}
+
+
+#title>#actions {
+	flex-grow: 1;
+	padding: 0.5em 0.5em 0.5em 1em;
+	justify-content: flex-end;
+}
+
+#title>#actions button>span,
+#title>#actions .action span {
+  display: none;
+}
+#title>#actions button>.counter {
+  display: block;
+  font-weight: bold;
+  color: #fff;
+  width: 2em;
+  height: 2em;
+	font-size: 0.7em;
+	padding: 0.3em;
+}

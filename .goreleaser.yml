@@ -1,0 +1,107 @@
+project_name: filebrowser
+
+env:
+  - GO111MODULE=on
+
+before:
+  hooks:
+    - go mod download
+
+build:
+  env:
+    - CGO_ENABLED=0
+  ldflags:
+    - -s -w -X github.com/filebrowser/filebrowser/v2/version.Version={{ .Version }} -X github.com/filebrowser/filebrowser/v2/version.CommitSHA={{ .ShortCommit }}
+  main: main.go
+  binary: filebrowser
+  goos:
+    - darwin
+    - linux
+    - windows
+    - freebsd
+    - netbsd
+    - openbsd
+    - dragonfly
+    - solaris
+  goarch:
+    - amd64
+    - 386
+    - arm
+    - arm64
+  goarm:
+    - 5
+    - 6
+    - 7
+  ignore:
+    - goos: darwin
+      goarch: 386
+    - goos: openbsd
+      goarch: arm
+    - goos: freebsd
+      goarch: arm
+    - goos: netbsd
+      goarch: arm
+    - goos: solaris
+      goarch: arm
+
+archives:
+  -
+    name_template: "{{.Os}}-{{.Arch}}{{if .Arm}}v{{.Arm}}{{end}}-{{ .ProjectName }}"
+    format: tar.gz
+    format_overrides:
+      - goos: windows
+        format: zip
+
+dockers:
+  -
+    dockerfile: Dockerfile
+    binaries:
+      - filebrowser
+    goos: linux
+    goarch: amd64
+    goarm: ''
+    image_templates:
+      - "filebrowser/filebrowser:latest"
+      - "filebrowser/filebrowser:{{ .Tag }}"
+      - "filebrowser/filebrowser:v{{ .Major }}"
+    extra_files:
+      - .docker.json
+  -
+    dockerfile: Dockerfile
+    binaries:
+      - filebrowser
+    goos: linux
+    goarch: arm
+    goarm: '5'
+    image_templates:
+      - "filebrowser/filebrowser:pi"
+      - "filebrowser/filebrowser:{{ .Tag }}-pi"
+      - "filebrowser/filebrowser:v{{ .Major }}-pi"
+    extra_files:
+      - .docker.json
+  -
+    dockerfile: Dockerfile.alpine
+    binaries:
+      - filebrowser
+    goos: linux
+    goarch: amd64
+    goarm: ''
+    image_templates:
+      - "filebrowser/filebrowser:alpine"
+      - "filebrowser/filebrowser:{{ .Tag }}-alpine"
+      - "filebrowser/filebrowser:v{{ .Major }}-alpine"
+    extra_files:
+      - .docker.json
+  -
+    dockerfile: Dockerfile.debian
+    binaries:
+      - filebrowser
+    goos: linux
+    goarch: amd64
+    goarm: ''
+    image_templates:
+      - "filebrowser/filebrowser:debian"
+      - "filebrowser/filebrowser:{{ .Tag }}-debian"
+      - "filebrowser/filebrowser:v{{ .Major }}-debian"
+    extra_files:
+      - .docker.json
