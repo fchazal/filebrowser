@@ -51,7 +51,7 @@
           and watch it with your favorite video player!
         </video>
         <object v-else-if="req.extension.toLowerCase() == '.pdf'" class="pdf" :data="raw"></object>
-        <a v-else-if="req.type == 'blob'" :href="download">
+        <a v-else :href="download">
           <h2 class="message">{{ $t('buttons.download') }} <i class="material-icons">file_download</i></h2>
         </a>
       </div>

@@ -50,7 +50,6 @@
     </div>
     
     <preview v-else-if="isPreview"></preview>
-    <editor v-else-if="isEditor"></editor>
     <listing :class="{ multiple }" v-else-if="isListing"></listing>
 
     <div v-else>
@@ -98,14 +97,12 @@ export default {
     NotFound,
     InternalError,
     Preview,
-    Listing,
-    Editor: () => import('@/components/files/Editor')
+    Listing
   },
   computed: {
     ...mapGetters([
       'selectedCount',
       'isListing',
-      'isEditor',
       'isFiles'
     ]),
     ...mapState([
@@ -152,7 +149,7 @@ export default {
         : this.user.perm.create)
     },
     isPreview () {
-      return !this.loading && !this.isListing && !this.isEditor || this.loading && this.$store.state.previewMode
+      return !this.loading && !this.isListing || this.loading && this.$store.state.previewMode
     },
     breadcrumbs () {
       let parts = this.$route.path.split('/')
@@ -268,8 +265,7 @@ export default {
 
       // Del!
       if (event.keyCode === 46) {
-        if (this.isEditor ||
-          !this.isFiles ||
+        if (!this.isFiles ||
           this.loading ||
           !this.user.perm.delete ||
           (this.isListing && this.selectedCount === 0) ||
@@ -286,27 +282,13 @@ export default {
 
       // F2!
       if (event.keyCode === 113) {
-        if (this.isEditor ||
-          !this.isFiles ||
+        if (!this.isFiles ||
           this.loading ||
           !this.user.perm.rename ||
           (this.isListing && this.selectedCount === 0) ||
           (this.isListing && this.selectedCount > 1)) return
 
         this.$store.commit('showHover', 'rename')
-      }
-
-      // CTRL + S
-      if (event.ctrlKey || event.metaKey) {
-        if (this.isEditor) return
-
-        if (String.fromCharCode(event.which).toLowerCase() === 's') {
-          event.preventDefault()
-
-          if (this.req.kind !== 'editor') {
-            document.getElementById('download-button').click()
-          }
-        }
       }
     },
     scroll () {

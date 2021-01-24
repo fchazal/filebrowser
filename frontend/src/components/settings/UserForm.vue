@@ -30,7 +30,6 @@
     </div>
 
     <permissions :perm.sync="user.perm" />
-    <commands v-if="isExecEnabled" :commands.sync="user.commands" />
 
     <div v-if="!isDefault">
       <h3>{{ $t('settings.rules') }}</h3>
@@ -45,7 +44,6 @@ import Languages from './Languages'
 import Rules from './Rules'
 import Drives from './Drives'
 import Permissions from './Permissions'
-import Commands from './Commands'
 import { enableExec } from '@/utils/constants'
 
 export default {
@@ -55,7 +53,6 @@ export default {
     Languages,
     Rules,
     Drives,
-    Commands
   },
   props: [ 'user', 'isNew', 'isDefault' ],
   computed: {
