@@ -1,5 +1,15 @@
 @import 'colors';
 
+#dragged {
+  color: #fff;
+  font-weight: bold;
+  padding: 0.8em 1.2em;
+  
+  border-radius: 0.3em;
+  background: $accent-color;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
 #listing {
   p { margin: 0 }
 
@@ -44,7 +54,7 @@
   
   .items.folders {
     margin-top: -1px;
-    
+
     .item .icon {
       font-family: 'Material Icons';
     }

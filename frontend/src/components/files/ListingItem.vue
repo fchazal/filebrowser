@@ -93,14 +93,12 @@ export default {
     },
     dragStart: function (ev) {
       console.log(ev)
-/*
+
       {
-        let element = document.createElement('div')
-        element.innerHTML = 'hello<b>you</b>'
-        document.body.appendChild(element)
-        ev.dataTransfer.setDragImage(element, 0, 0)
+        let element = document.getElementById('dragged')
+        element.innerHTML = `${this.selectedCount} items`
+        ev.dataTransfer.setDragImage(element, 20, 20)
       }
-*/
 
       if (this.selectedCount === 0) {
         this.addSelected(this.index)

@@ -9,6 +9,7 @@
       <router-view></router-view>
     </main>
     <prompts></prompts>
+    <div id="dragged" style="position: absolute; top: -100px">HELLO</div>
   </div>
 </template>
 
