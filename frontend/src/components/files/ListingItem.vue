@@ -12,21 +12,16 @@
   :data-dir="isDir"
   :aria-label="name"
   :aria-selected="isSelected">
-    <div>
-      <!--<i v-if="type==='image' && !isSharing" class="material-icons">{{ photo }}</i>-->
-      <i :class="'material-icons ' + type">{{ icon }}</i>
-    </div>
 
-    <div>
-      <p class="name">{{ name }}</p>
+    <i :class="'icon material-icons ' + type">{{ icon }}</i>
+    <p class="name">{{ name }}</p>
 
-      <p v-if="isDir" class="size" data-order="-1">&mdash;</p>
-      <p v-else class="size" :data-order="humanSize()">{{ humanSize() }}</p>
+    <p class="modified">
+      <time :datetime="modified">{{ humanTime() }}</time>
+    </p>
 
-      <p class="modified">
-        <time :datetime="modified">{{ humanTime() }}</time>
-      </p>
-    </div>
+    <p v-if="isDir" class="size" data-order="-1">&mdash;</p>
+    <p v-else class="size" :data-order="humanSize()">{{ humanSize() }}</p>
   </div>
 </template>
 
@@ -96,7 +91,17 @@ export default {
     humanTime: function () {
       return moment(this.modified).fromNow()
     },
-    dragStart: function () {
+    dragStart: function (ev) {
+      console.log(ev)
+/*
+      {
+        let element = document.createElement('div')
+        element.innerHTML = 'hello<b>you</b>'
+        document.body.appendChild(element)
+        ev.dataTransfer.setDragImage(element, 0, 0)
+      }
+*/
+
       if (this.selectedCount === 0) {
         this.addSelected(this.index)
         return

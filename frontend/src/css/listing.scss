@@ -1,0 +1,180 @@
+@import 'colors';
+
+#listing {
+  p { margin: 0 }
+
+  .item {
+    div:last-of-type {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+
+    .name {
+      font-weight: 500;
+    }
+
+    .size,
+    .modified {
+      font-size: 0.9em;
+    }
+  }
+
+  .item[aria-selected=true] {
+    color: #fff !important;
+    background-color: rgba($accent-color,0.8) !important;
+  }
+  
+  .item:hover {
+    color: $accent-color;
+    background-color: rgba($accent-color,0.1);
+  }
+
+}
+
+#listing.list {
+  padding-top: 3em;
+
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+
+  h2 { display: none }
+  
+  .items.folders {
+    margin-top: -1px;
+    
+    .item .icon {
+      font-family: 'Material Icons';
+    }
+  }
+
+	.item.header {
+    position: fixed;
+    z-index: 999;
+    
+    top: 9em;
+    height: 3em;
+    
+    display: flex !important;
+    
+    border-width: 0 0 1px 0;
+    width: calc(100% - 250px);
+
+    p {
+      cursor: pointer;
+      font-weight: 500;
+      font-size: inherit !important;
+
+      i {
+        opacity: 0;
+        margin-left: .2em;
+        font-size: 1.5em;
+        vertical-align: middle;
+        transition: .1s ease all;
+      }
+
+      span {
+        vertical-align: middle;
+      }
+  
+      &:hover i,
+      &.active i { opacity: 1 }
+
+      &.name {
+        padding-left: 1em;
+      }
+    }
+  }
+
+	.item {
+		display: flex;
+		flex-wrap: nowrap;
+    justify-content: flex-start;
+    
+		position: relative;
+		background-color: #fff;
+		transition: .1s ease background, .1s ease opacity;
+		align-items: center;
+
+    width: 100%;
+    margin: 0;
+    border: 0 solid rgba(0,0,0,.1);
+    border-top-width: 1px;
+
+    &[aria-selected=true] {
+      border-color: transparent;
+    }
+
+    .icon {
+      padding: 0.5rem 1rem;
+    }
+
+    .name {
+      flex-grow: 1;
+      white-space: nowrap;
+      
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .size,
+    .modified {
+      width: 10rem;
+      flex-shrink: 0;
+    }
+  }
+}
+
+#listing.mosaic {
+	h2 {
+		margin: 1.5em;
+		font-size: 1em;
+    font-weight: 500;
+  }
+  
+  .item.header {
+    display: none;
+  }
+
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+	.item {
+    display: flex;
+    align-items: center;
+
+    width: calc(33% - 1em);
+    margin: .5em;
+    padding: .5em;
+    border-radius: .5em;
+    border: 1px solid $border-color;
+
+    .icon {
+      padding: 0.5rem 1rem;
+    }
+
+    .size,
+    .modified { display: none }
+  }
+  
+}
+
+.message {
+  text-align: center;
+  font-size: 2em;
+  margin: 1em auto;
+  display: block !important;
+  width: 95%;
+  color: rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+
+  i {
+    font-size: 2.5em;
+    margin-bottom: .2em;
+    display: block;
+  }
+}

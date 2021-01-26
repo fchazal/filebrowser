@@ -1,15 +1,5 @@
 <template>
   <div v-if="!loading">
-    <div id="breadcrumbs">
-      <router-link :to="'/share/' + hash" :aria-label="$t('files.home')" :title="$t('files.home')">
-        <i class="material-icons">home</i>
-      </router-link>
-
-      <span v-for="(link, index) in breadcrumbs" :key="index">
-          <span class="chevron"><i class="material-icons">keyboard_arrow_right</i></span>
-          <router-link :to="link.url">{{ link.name }}</router-link>
-        </span>
-    </div>
     <div class="share">
       <div class="share__box share__box__info">
           <div class="share__box__header">

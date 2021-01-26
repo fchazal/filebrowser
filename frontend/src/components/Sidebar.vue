@@ -1,13 +1,12 @@
 <template>
   <nav id="sidebar" :class="{active}">
-    <template v-if="isLogged && !isSharing && !isMobile">
-      <router-link class="action" to="/files/" :aria-label="$t('sidebar.home')" :title="$t('sidebar.home')">
+    <template v-if="!isMobile">
+      <router-link :class="'action' + (this.$store.state.route.name === 'Files' ? ' active':'')" to="/files/" :aria-label="$t('sidebar.home')" :title="$t('sidebar.home')">
         <i class="material-icons">cloud</i>
         <span>{{ $t('sidebar.home') }}</span>
       </router-link>
 
       <div id="hierarchy">
-
       </div>
 
       <div v-for="(drive, index) in this.user.drives" :key="index">
@@ -19,12 +18,12 @@
 
       <div class="separator"></div>
 
-      <router-link class="action" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">
+      <router-link :class="'action' + (this.$store.state.route.name === 'Shares' ? ' active':'')" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">
         <i class="material-icons">folder_shared</i>
         <span>{{$t('sidebar.shares')}}</span>
       </router-link>
 
-      <router-link v-if="user.perm.admin" class="action" to="/users" :aria-label="$t('sidebar.users')" :title="$t('sidebar.users')">
+      <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Users' ? ' active':'')" to="/users" :aria-label="$t('sidebar.users')" :title="$t('sidebar.users')">
         <i class="material-icons">people</i>
         <span>{{$t('sidebar.users')}}</span>
       </router-link>

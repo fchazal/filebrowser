@@ -18,6 +18,10 @@
 @import "./login.css";
 @import "./title.css";
 
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
 .link {
   color: var(--blue);
 }

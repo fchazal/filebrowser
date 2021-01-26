@@ -22,7 +22,12 @@ nav#sidebar {
 		border-radius: 0 2em 2em 0;
 		
 		&:hover {
+			background-color: rgba($main-color,0.1);
+		}
+
+		&.active {
 			color: $accent-color;
+			font-weight: 500;
 			background-color: rgba($accent-color,0.1);
 		}
 	}

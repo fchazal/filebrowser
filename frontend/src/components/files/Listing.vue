@@ -4,46 +4,48 @@
       <i class="material-icons">sentiment_dissatisfied</i>
       <span>{{ $t('files.lonely') }}</span>
     </h2>
+
     <input style="display:none" type="file" id="upload-input" @change="uploadInput($event)" multiple>
     <input style="display:none" type="file" id="upload-folder-input" @change="uploadInput($event)" webkitdirectory multiple>
   </div>
+
   <div v-else id="listing" :class="user.viewMode">
-      <div class="item header">
-        <div></div>
-        <div>
-          <p :class="{ active: nameSorted }" class="name"
-            role="button"
-            tabindex="0"
-            @click="sort('name')"
-            :title="$t('files.sortByName')"
-            :aria-label="$t('files.sortByName')">
-            <span>{{ $t('files.name') }}</span>
-            <i class="material-icons">{{ nameIcon }}</i>
-          </p>
+    <div class="item header">
+      <p :class="{ active: nameSorted }" class="name"
+        role="button"
+        tabindex="0"
+        @click="sort('name')"
+        :title="$t('files.sortByName')"
+        :aria-label="$t('files.sortByName')">
+        <span>{{ $t('files.name') }}</span>
+        <i class="material-icons">{{ nameIcon }}</i>
+      </p>
+      
+      <p :class="{ active: modifiedSorted }" class="modified"
+        role="button"
+        tabindex="0"
+        @click="sort('modified')"
+        :title="$t('files.sortByLastModified')"
+        :aria-label="$t('files.sortByLastModified')">
+        <span>{{ $t('files.lastModified') }}</span>
+        <i class="material-icons">{{ modifiedIcon }}</i>
+      </p>
 
-          <p :class="{ active: sizeSorted }" class="size"
-            role="button"
-            tabindex="0"
-            @click="sort('size')"
-            :title="$t('files.sortBySize')"
-            :aria-label="$t('files.sortBySize')">
-            <span>{{ $t('files.size') }}</span>
-            <i class="material-icons">{{ sizeIcon }}</i>
-          </p>
-          <p :class="{ active: modifiedSorted }" class="modified"
-            role="button"
-            tabindex="0"
-            @click="sort('modified')"
-            :title="$t('files.sortByLastModified')"
-            :aria-label="$t('files.sortByLastModified')">
-            <span>{{ $t('files.lastModified') }}</span>
-            <i class="material-icons">{{ modifiedIcon }}</i>
-          </p>
-        </div>
-      </div>
+      <p :class="{ active: sizeSorted }" class="size"
+        role="button"
+        tabindex="0"
+        @click="sort('size')"
+        :title="$t('files.sortBySize')"
+        :aria-label="$t('files.sortBySize')">
+        <span>{{ $t('files.size') }}</span>
+        <i class="material-icons">{{ sizeIcon }}</i>
+      </p>
+    </div>
 
-    <h2 v-if="req.numDirs > 0">{{ $t('files.folders') }}</h2>
-    <div v-if="req.numDirs > 0">
+    <h2 v-if="req.numDirs > 0">
+      {{ $t('files.folders') }}
+    </h2>
+    <div v-if="req.numDirs > 0" class="items folders">
       <item v-for="(item) in dirs"
         :key="base64(item.name)"
         v-bind:index="item.index"
@@ -57,7 +59,7 @@
     </div>
 
     <h2 v-if="req.numFiles > 0">{{ $t('files.files') }}</h2>
-    <div v-if="req.numFiles > 0">
+    <div v-if="req.numFiles > 0" class="items files">
       <item v-for="(item) in files"
         :key="base64(item.name)"
         v-bind:index="item.index"
@@ -72,7 +74,6 @@
 
     <input style="display:none" type="file" id="upload-input" @change="uploadInput($event)" multiple>
     <input style="display:none" type="file" id="upload-folder-input" @change="uploadInput($event)" webkitdirectory multiple>
-
   </div>
 </template>
 

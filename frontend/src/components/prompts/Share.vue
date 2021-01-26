@@ -24,7 +24,7 @@
           <button class="action copy-clipboard"
             :data-clipboard-text="buildLink(link.hash)"
             :aria-label="$t('buttons.copyToClipboard')"
-            :title="$t('buttons.copyToClipboard')"><i class="material-icons">content_paste</i></button>
+            :title="$t('buttons.copyToClipboard')"><i class="material-icons">content_copy</i></button>
         </li>
 
         <li>

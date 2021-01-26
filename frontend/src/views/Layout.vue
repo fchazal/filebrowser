@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="container">
     <div id="progress">
       <div v-bind:style="{ width: this.progress + '%' }"></div>
     </div>
-    <site-header></site-header>
-    <sidebar></sidebar>
+    <site-header v-if="!isSharing"></site-header>
+    <sidebar v-if="!isSharing"></sidebar>
     <main>
       <router-view></router-view>
     </main>
@@ -27,7 +27,11 @@ export default {
     Prompts
   },
   computed: {
-    ...mapGetters([ 'isLogged', 'progress' ]),
+    ...mapGetters([
+      'isLogged',
+      'isSharing',
+      'progress'
+    ]),
     ...mapState([ 'user' ]),
     isExecEnabled: () => enableExec
   },

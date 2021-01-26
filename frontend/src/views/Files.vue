@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="title" v-if="isListing || error">
+    <div v-if="isListing || error" id="title">
       <h2><router-link to="/files">{{ $t('files.home') }}</router-link></h2>
 
       <div id="breadcrumbs">
@@ -48,9 +48,9 @@
       <forbidden v-else-if="error.message === '403'"></forbidden>
       <internal-error v-else></internal-error>
     </div>
-    
+
     <preview v-else-if="isPreview"></preview>
-    <listing :class="{ multiple }" v-else-if="isListing"></listing>
+    <listing v-else-if="isListing" :class="{ multiple }"></listing>
 
     <div v-else>
       <h2 class="message">
@@ -103,7 +103,8 @@ export default {
     ...mapGetters([
       'selectedCount',
       'isListing',
-      'isFiles'
+      'isFiles',
+      'isSharing'
     ]),
     ...mapState([
       'req',

@@ -10,7 +10,8 @@ Vue.config.productionTip = true
 
 const notyDefault = {
   type: 'info',
-  layout: 'bottomRight',
+  theme: 'mint',
+  layout: 'bottom',
   timeout: 1000,
   progressBar: true
 }
@@ -22,7 +23,7 @@ Vue.prototype.$noty = (opts) => {
 Vue.prototype.$showSuccess = (message) => {
   new Noty(Object.assign({}, notyDefault, {
     text: message,
-    type: 'success'
+    type: 'alert'
   })).show()
 }
 
