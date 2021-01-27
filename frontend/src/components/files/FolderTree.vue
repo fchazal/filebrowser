@@ -1,26 +1,43 @@
 <template>
   <div>
-    <p>{{ $t('prompts.currentlyNavigating') }} <code>{{ nav }}</code>.</p>
-    <ul class="file-list">
-      <li @click="next"
-        @touchstart="touchstart"
-        role="button"
-        tabindex="0"
-        :aria-label="item.name"
-        :aria-selected="selected == item.url"
-        :key="item.name" v-for="item in items"
-        :data-url="item.url">{{ item.name }}</li>
-    </ul>
+    <router-link :to="uri">
+      <div
+        :style="'padding-left: '+level+'em'"
+        :aria-label="name"
+        :aria-level="level"
+        class="item action"
+        @click="expand">
+        <i class="icon material-icons ">{{ icon }}</i>
+        <p class="name">{{ name }}</p>
+      </div>
+    </router-link>
+
+    <div
+      :key="item.name" v-for="item in items"
+      :data-url="item.url">
+      <folder-tree :uri="item.url" :name="item.name" :level="level + 1"></folder-tree>
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import url from '@/utils/url'
 import { files } from '@/api'
 
 export default {
-  name: 'file-list',
+  name: 'folder-tree',
+  props: {
+    'uri': String,
+    'name': String,
+    'icon': { 
+      type: String,
+      default: 'folder'
+    },
+    'level': {
+      type: Number,
+      default: 0
+    }
+  },
   data: function () {
     return {
       items: [],
@@ -39,10 +56,15 @@ export default {
     }
   },
   mounted () {
-    console.log("req" + this.req)
-    this.fillOptions(this.req)
+    //console.log("req" + this.req)
+    //this.fillOptions(this.req)
   },
   methods: {
+    expand () {
+      files.fetch(this.uri)
+        .then(this.fillOptions)
+        .catch(this.$showError)
+    },
     fillOptions (req) {
       // Sets the current path and resets
       // the current items.
@@ -50,16 +72,6 @@ export default {
       this.items = []
 
       this.$emit('update:selected', this.current)
-
-      // If the path isn't the root path,
-      // show a button to navigate to the previous
-      // directory.
-      if (req.url !== '/files/') {
-        this.items.push({
-          name: '..',
-          url: url.removeLastDir(req.url) + '/'
-        })
-      }
 
       // If this folder is empty, finish here.
       if (req.items === null) return

@@ -59,6 +59,7 @@ export default {
       if (this.type === 'video') return 'movie'
       if (this.type === 'text') return 'article'
       if (ext === 'pdf') return 'picture_as_pdf'
+      if (ext === 'zip') return 'archive'
       return 'insert_drive_file'
     },
     isDraggable () {

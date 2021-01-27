@@ -51,6 +51,7 @@
           and watch it with your favorite video player!
         </video>
         <embed v-else-if="req.extension.toLowerCase() == '.pdf'" class="pdf" :src="raw+'#toolbar=0&navpanes=0'"/>
+        <embed v-else-if="req.type == 'text'" class="text" :src="raw" type="text/plain" />
         <!--<object v-else-if="req.extension.toLowerCase() == '.pdf'" class="pdf" :data="raw"></object>-->
         <a v-else :href="download">
           <h2 class="message">{{ $t('buttons.download') }} <i class="material-icons">file_download</i></h2>

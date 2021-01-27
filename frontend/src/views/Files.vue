@@ -1,9 +1,9 @@
 <template>
   <div>
     <div v-if="isListing || error" id="title">
-      <h2><router-link to="/files">{{ $t('files.home') }}</router-link></h2>
-
       <div id="breadcrumbs">
+        <router-link to="/files">{{ $t('files.home') }}</router-link>
+        
         <span v-for="(link, index) in breadcrumbs" :key="index">
           <span class="chevron"><i class="material-icons">keyboard_arrow_right</i></span>
           <router-link :to="link.url">{{ link.name }}</router-link>

@@ -32,6 +32,26 @@ nav#sidebar {
 		}
 	}
 
+	#drive {
+		.item[aria-level='0'] {
+			padding: 0 .5em !important;
+			i { 
+				padding: 0.4em;
+				font-family: 'Material Icons Outlined';
+			}
+		}
+
+		.item {
+			display: flex;
+			align-items: center;
+
+			i {
+				padding: 0 0.4em;
+				font-family: 'Material Icons'
+			}
+		}
+	}
+
 	>div.separator {
 		border-top: 1px solid $border-color;
 		margin: 0.5em 0;

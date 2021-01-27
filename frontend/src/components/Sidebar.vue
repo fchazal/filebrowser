@@ -1,21 +1,17 @@
 <template>
   <nav id="sidebar" :class="{active}">
     <template v-if="!isMobile">
-      <router-link :class="'action' + (this.$store.state.route.name === 'Files' ? ' active':'')" to="/files/" :aria-label="$t('sidebar.home')" :title="$t('sidebar.home')">
-        <i class="material-icons">cloud</i>
-        <span>{{ $t('sidebar.home') }}</span>
-      </router-link>
-
-      <div id="hierarchy">
+      <div id="drive">
+        <folder-tree uri="/files/" :name="$t('sidebar.home')" icon="cloud"></folder-tree>
       </div>
-
+<!--
       <div v-for="(drive, index) in this.user.drives" :key="index">
         <router-link class="action" :to="'/files/' + drive.name" :aria-label="drive.name" :title="drive.name">
           <i class="material-icons">{{ drive.icon }}</i>
           <span>{{ drive.name }}</span>
         </router-link>
       </div>
-
+-->
       <div class="separator"></div>
 
       <router-link :class="'action' + (this.$store.state.route.name === 'Shares' ? ' active':'')" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">
@@ -34,19 +30,25 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import { version, signup, disableExternal, noAuth, authMethod } from '@/utils/constants'
+import FolderTree from './files/FolderTree.vue'
 
 export default {
   name: 'sidebar',
   data: () => { return {
-    'width': window.innerWidth
+    'width': window.innerWidth,
+    current: window.location.pathname,
+    dest: null
   }},
+  components: {
+    FolderTree
+  },
   created () {
     window.addEventListener('resize', () => {
       this.width = window.innerWidth
     })
   },
   computed: {
-    ...mapState([ 'user' ]),
+    ...mapState([ 'req', 'selected', 'user' ]),
     ...mapGetters([
       'isLogged',
       'isSharing'

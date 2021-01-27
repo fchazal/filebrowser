@@ -14,7 +14,6 @@
   height: 2em;
 }
 
-#title>h2,
 #title>#breadcrumbs {
   font-size: 1.5em;
   font-weight: 300;
@@ -31,15 +30,12 @@
 #title>#breadcrumbs a {
   color: inherit;
   transition: .1s ease-in;
-  border-radius: .125em;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
 }
 
 #title>#breadcrumbs a:hover {
   background-color: rgba(0,0,0, 0.05);
-}
-
-#title>#breadcrumbs span a {
-  padding: .2em;
 }
 
 #title>#breadcrumbs>div:last-child {
