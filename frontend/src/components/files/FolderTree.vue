@@ -6,10 +6,9 @@
         :aria-label="name"
         :aria-level="level"
         :class="'item action' + (this.opened?' opened':'') + (this.selected?' selected':'')"
-        @click="update"
         @dragover="dragOver"
         @drop="drop">
-        <i class="chevron material-icons">arrow_right</i>
+        <i @click="update" class="chevron material-icons">arrow_right</i>
         <i class="icon material-icons ">{{ icon }}</i>
         <p class="name">{{ name }}</p>
       </div>
