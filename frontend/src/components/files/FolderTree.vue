@@ -6,7 +6,9 @@
         :aria-label="name"
         :aria-level="level"
         :class="'item action' + (this.opened?' opened':'') + (this.selected?' selected':'')"
-        @click="update">
+        @click="update"
+        @dragover="dragOver"
+        @drop="drop">
         <i class="chevron material-icons">arrow_right</i>
         <i class="icon material-icons ">{{ icon }}</i>
         <p class="name">{{ name }}</p>
@@ -24,6 +26,7 @@
 <script>
 import { mapState } from 'vuex'
 import { files } from '@/api'
+import * as upload  from '@/utils/upload'
 
 export default {
   name: 'folder-tree',
@@ -132,21 +135,72 @@ export default {
         this.next(event)
       }
     },
-    itemClick: function (event) {
-      if (this.user.singleClick) this.next(event)
-      else this.select(event)
+    dragOver: function (event) {
+      event.preventDefault()
+      let el = event.target
+
+      for (let i = 0; i < 5; i++) {
+        if (!el.classList.contains('item')) {
+          el = el.parentElement
+        }
+      }
+
+      el.style.opacity = 1
     },
-    select: function (event) {
-      // If the element is already selected, unselect it.
-      if (this.selected === event.currentTarget.dataset.url) {
-        this.selected = null
-        this.$emit('update:selected', this.current)
+    drop: async function (event) {
+      event.preventDefault()
+
+      if (this.selectedCount === 0) return
+
+      let el = event.target
+      for (let i = 0; i < 5; i++) {
+        if (el !== null && !el.classList.contains('item')) {
+          el = el.parentElement
+        }
+      }
+
+      let items = []
+
+      for (let i of this.selected) {
+        items.push({
+          from: this.req.items[i].url,
+          to: this.url + this.req.items[i].name,
+          name: this.req.items[i].name
+        })
+      }      
+
+      //let base = el.querySelector('.name').innerHTML + '/'
+      let path = this.uri //$route.path + base
+      let baseItems = (await files.fetch(path)).items
+
+      let action = (overwrite, rename) => {
+        files.move(items, overwrite, rename).then(() => {
+          this.$store.commit('setReload', true)
+        }).catch(this.$showError)
+      }
+
+      let conflict = upload.checkConflict(items, baseItems)
+
+      let overwrite = false
+      let rename = false
+
+      if (conflict) {
+        this.$store.commit('showHover', {
+          prompt: 'replace-rename',
+          confirm: (event, option) => {
+            overwrite = option == 'overwrite'
+            rename = option == 'rename'
+
+            event.preventDefault()
+            this.$store.commit('closeHovers')
+            action(overwrite, rename)
+          }
+        })
+
         return
       }
 
-      // Otherwise select the element.
-      this.selected = event.currentTarget.dataset.url
-      this.$emit('update:selected', this.selected)
+      action(overwrite, rename)
     }
   }
 }

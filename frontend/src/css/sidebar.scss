@@ -1,12 +1,14 @@
 @import 'colors';
 
 nav#sidebar {
-  width: 240px;
-  position: fixed;
+	position: fixed;
   left: 0;
-
+	top: 4.5em;
+  width: 240px;
+	height: calc(100vh - 4.5em);
+	overflow: auto;
+	
   padding-top: 0.5em;
-  top: 4.5em;
 
 	.action {
 		display: flex;
@@ -58,6 +60,7 @@ nav#sidebar {
 			.name {
 				overflow: hidden;
 				text-overflow: ellipsis;
+				font-weight: 500;
 			}
 
 			&.opened i.chevron { transform: rotate(90deg) }
