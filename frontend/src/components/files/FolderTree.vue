@@ -2,11 +2,12 @@
   <div>
     <router-link :to="uri">
       <div
-        :style="'padding-left: '+level+'em'"
+        :style="'padding-left: '+level*1.5+'rem'"
         :aria-label="name"
         :aria-level="level"
-        class="item action"
-        @click="expand">
+        :class="'item action' + (this.opened?' opened':'') + (this.selected?' selected':'')"
+        @click="update">
+        <i class="chevron material-icons">arrow_right</i>
         <i class="icon material-icons ">{{ icon }}</i>
         <p class="name">{{ name }}</p>
       </div>
@@ -45,7 +46,8 @@ export default {
         id: '',
         count: 0
       },
-      selected: null,
+      opened: false,
+      selected: false,
       current: window.location.pathname
     }
   },
@@ -60,10 +62,18 @@ export default {
     //this.fillOptions(this.req)
   },
   methods: {
-    expand () {
-      files.fetch(this.uri)
-        .then(this.fillOptions)
-        .catch(this.$showError)
+    update () {
+      if (!this.opened) {
+        files.fetch(this.uri)
+          .then(this.fillOptions)
+          .catch(this.$showError)
+
+        this.opened = true
+      }
+      else {
+        this.items = []
+        this.opened = false
+      }
     },
     fillOptions (req) {
       // Sets the current path and resets

@@ -35,8 +35,8 @@ nav#sidebar {
 	#drive {
 		.item[aria-level='0'] {
 			padding: 0 .5em !important;
-			i { 
-				padding: 0.4em;
+			i.icon { 
+				padding: 0.4em 0.4em 0.4em 0;
 				font-family: 'Material Icons Outlined';
 			}
 		}
@@ -45,10 +45,22 @@ nav#sidebar {
 			display: flex;
 			align-items: center;
 
-			i {
-				padding: 0 0.4em;
+			i.chevron {
+				padding: 0;
+				transition: all 0.1s linear;
+			}
+
+			i.icon {
+				padding: 0 0.4em 0 0;
 				font-family: 'Material Icons'
 			}
+
+			.name {
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			&.opened i.chevron { transform: rotate(90deg) }
 		}
 	}
 
