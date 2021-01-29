@@ -79,8 +79,8 @@
 
       i {
         opacity: 0;
-        margin-left: .2em;
-        font-size: 1.5em;
+        margin: 0 .2em;
+        font-size: 1em;
         vertical-align: middle;
         transition: .1s ease all;
       }
@@ -131,7 +131,9 @@
 
     .size,
     .modified {
-      width: 10rem;
+      width: 9rem;
+      text-align: right;
+      padding: 0 0.5em;
       flex-shrink: 0;
     }
   }

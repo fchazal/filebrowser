@@ -6,8 +6,9 @@
   @dragstart="dragStart"
   @dragover="dragOver"
   @drop="drop"
-  @click="itemClick"
+  @click="click"
   @dblclick="dblclick"
+  @contextmenu="ctxclick"
   @touchstart="touchstart"
   :data-dir="isDir"
   :aria-label="name"
@@ -44,10 +45,6 @@ export default {
   computed: {
     ...mapState(['user', 'selected', 'req', 'jwt']),
     ...mapGetters(['selectedCount', 'isSharing']),
-    singleClick () {
-      if (this.isSharing) return false
-      return this.user.singleClick
-    },
     isSelected () {
       return (this.selected.indexOf(this.index) !== -1)
     },
@@ -90,7 +87,7 @@ export default {
       return filesize(this.size)
     },
     humanTime: function () {
-      return moment(this.modified).fromNow()
+      return moment(this.modified).format('DD/MM/YYYY')//.fromNow()
     },
     dragStart: function (ev) {
       console.log(ev)
@@ -181,16 +178,13 @@ export default {
 
       action(overwrite, rename)
     },
-    itemClick: function(event) {
-      if (this.singleClick && !this.$store.state.multiple) this.open()
-      else this.click(event)
-    },
-    click: function (event) {
-      if (!this.singleClick && this.selectedCount !== 0) event.preventDefault()
+    click (event) {
+      if (this.selectedCount !== 0) event.preventDefault()
+      /*
       if (this.$store.state.selected.indexOf(this.index) !== -1) {
         this.removeSelected(this.index)
         return
-      }
+      }*/
 
       if (event.shiftKey && this.selected.length > 0) {
         let fi = 0
@@ -213,11 +207,14 @@ export default {
         return
       }
 
-      if (!this.singleClick && !event.ctrlKey && !event.metaKey && !this.$store.state.multiple) this.resetSelected()
+      if (!event.ctrlKey && !event.metaKey) this.resetSelected()
       this.addSelected(this.index)
     },
-    dblclick: function () {
-      if (!this.singleClick) this.open()
+    ctxclick (event) {
+      event.preventDefault()
+    },
+    dblclick () {
+      this.open()
     },
     touchstart () {
       setTimeout(() => {

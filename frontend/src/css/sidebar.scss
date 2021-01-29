@@ -64,6 +64,10 @@ nav#sidebar {
 			}
 
 			&.opened i.chevron { transform: rotate(90deg) }
+			&.selected {
+				color: $accent-color;
+				background-color: rgba($accent-color,0.1);
+			}
 		}
 	}
 

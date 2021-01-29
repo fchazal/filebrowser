@@ -27,8 +27,8 @@
         @click="sort('modified')"
         :title="$t('files.sortByLastModified')"
         :aria-label="$t('files.sortByLastModified')">
-        <span>{{ $t('files.lastModified') }}</span>
         <i class="material-icons">{{ modifiedIcon }}</i>
+        <span>{{ $t('files.lastModified') }}</span>
       </p>
 
       <p :class="{ active: sizeSorted }" class="size"
@@ -37,8 +37,8 @@
         @click="sort('size')"
         :title="$t('files.sortBySize')"
         :aria-label="$t('files.sortBySize')">
-        <span>{{ $t('files.size') }}</span>
         <i class="material-icons">{{ sizeIcon }}</i>
+        <span>{{ $t('files.size') }}</span>
       </p>
     </div>
 

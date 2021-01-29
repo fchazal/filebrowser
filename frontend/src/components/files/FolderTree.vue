@@ -8,7 +8,7 @@
         :class="'item action' + (this.opened?' opened':'') + (this.selected?' selected':'')"
         @dragover="dragOver"
         @drop="drop">
-        <i @click="update" class="chevron material-icons">arrow_right</i>
+        <i @click="expand" class="chevron material-icons">arrow_right</i>
         <i class="icon material-icons ">{{ icon }}</i>
         <p class="name">{{ name }}</p>
       </div>
@@ -48,23 +48,19 @@ export default {
         id: '',
         count: 0
       },
-      opened: false,
-      selected: false,
-      current: window.location.pathname
+      opened: false
     }
   },
   computed: {
     ...mapState([ 'req', 'user' ]),
-    nav () {
-      return decodeURIComponent(this.current)
+    selected () {
+      return this.req.url === this.uri
     }
   },
-  mounted () {
-    //console.log("req" + this.req)
-    //this.fillOptions(this.req)
-  },
   methods: {
-    update () {
+    expand (event) {
+      event.preventDefault()
+
       if (!this.opened) {
         files.fetch(this.uri)
           .then(this.fillOptions)
@@ -78,12 +74,7 @@ export default {
       }
     },
     fillOptions (req) {
-      // Sets the current path and resets
-      // the current items.
-      this.current = req.url
       this.items = []
-
-      this.$emit('update:selected', this.current)
 
       // If this folder is empty, finish here.
       if (req.items === null) return

@@ -1,5 +1,5 @@
 <template>
-  <div id="container">
+  <div id="container" @contextmenu="ctxclick">
     <div id="progress">
       <div v-bind:style="{ width: this.progress + '%' }"></div>
     </div>
@@ -42,6 +42,11 @@ export default {
       this.$store.commit('multiple', false)
       if (this.$store.state.show !== 'success') this.$store.commit('closeHovers')
     }
+  },
+  methods: {
+    ctxclick (event) {
+      event.preventDefault()
+    },
   }
 }
 </script>
