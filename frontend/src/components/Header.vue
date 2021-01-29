@@ -1,5 +1,5 @@
 <template>
-  <header v-if="!isPreview">
+  <header>
     <div class="left">
       <button v-if="isMobile" @click="openSidebar" :aria-label="$t('buttons.toggleSidebar')" :title="$t('buttons.toggleSidebar')" class="-mobile action">
         <i class="material-icons">menu</i>
@@ -54,7 +54,6 @@ export default {
     ...mapGetters([
       'selectedCount',
       'isFiles',
-      'isPreview',
       'isListing',
       'isLogged',
       'isSharing'

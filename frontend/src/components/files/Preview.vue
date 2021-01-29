@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div class="loading"><!-- v-if="loading">-->
+    <div class="loading" v-if="loading">-->
       <svg class="spinner" viewBox="0 0 50 50">
         <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
       </svg>
@@ -34,7 +34,7 @@
     </button>
 
     <template v-if="!loading">
-      <div class="preview">
+      <div class="preview" @click="this.back">
         <ExtendedImage v-if="req.type == 'image'" :src="raw"></ExtendedImage>
         <audio v-else-if="req.type == 'audio'" :src="raw" autoplay controls></audio>
         <video v-else-if="req.type == 'video'" :src="raw" autoplay controls>
@@ -50,8 +50,8 @@
         </video>
         <embed v-else-if="req.extension.toLowerCase() == '.pdf'" class="pdf" :src="raw+'#toolbar=0&navpanes=0'"/>
         <embed v-else-if="req.type == 'text'" class="text" :src="raw" type="text/plain" />
-        <!--<object v-else-if="req.extension.toLowerCase() == '.pdf'" class="pdf" :data="raw"></object>-->
-        <a v-else :href="download">
+  
+       <a v-else :href="download">
           <h2 class="message">{{ $t('buttons.download') }} <i class="material-icons">file_download</i></h2>
         </a>
       </div>
@@ -72,14 +72,14 @@ import DeleteButton from '@/components/buttons/Delete'
 import RenameButton from '@/components/buttons/Rename'
 import DownloadButton from '@/components/buttons/Download'
 import ExtendedImage from './ExtendedImage'
-
+/*
 const mediaTypes = [
   "image",
   "video",
   "audio",
   "blob"
 ]
-
+*/
 export default {
   name: 'preview',
   components: {
@@ -168,15 +168,20 @@ export default {
       this.$router.push({ path: this.nextLink })
     },
     key (event) {
-
       if (this.show !== null) {
         return
       }
 
-      if (event.which === 13 || event.which === 39) { // right arrow
-        if (this.hasNext) this.next()
-      } else if (event.which === 37) { // left arrow
-        if (this.hasPrevious) this.prev()
+      switch (event.which) {
+        case 27: // escape
+          this.back()
+          break
+        case 37: // left arrow
+          if (this.hasPrevious) this.prev()
+          break
+        case 39: // right arrow
+          if (this.hasNext) this.next()
+          break
       }
     },
     async updatePreview () {
@@ -206,14 +211,14 @@ export default {
         }
 
         for (let j = i - 1; j >= 0; j--) {
-          if (mediaTypes.includes(this.listing[j].type)) {
+          if (!this.listing[j].isDir) {//mediaTypes.includes(this.listing[j].type)) {
             this.previousLink = this.listing[j].url
             break
           }
         }
 
         for (let j = i + 1; j < this.listing.length; j++) {
-          if (mediaTypes.includes(this.listing[j].type)) {
+          if (!this.listing[j].isDir) {//mediaTypes.includes(this.listing[j].type)) {
             this.nextLink = this.listing[j].url
             break
           }

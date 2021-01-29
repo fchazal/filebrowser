@@ -5,7 +5,7 @@
         :style="'padding-left: '+level*1.5+'rem'"
         :aria-label="name"
         :aria-level="level"
-        :class="'item action' + (this.opened?' opened':'') + (this.selected?' selected':'')"
+        :class="['item action', { 'opened': this.opened }, { 'selected' : this.selected }]"
         @dragover="dragOver"
         @drop="drop">
         <i @click="expand" class="chevron material-icons">arrow_right</i>
