@@ -43,6 +43,40 @@
       </div>
     </div>
 
+    <div id="dropdown" class="active">
+      <button class="action" :aria-label="$t('sidebar.preview')" :title="$t('sidebar.preview')">
+        <i class="material-icons">remove_red_eye</i>
+        <span>{{ $t('sidebar.preview') }}</span>
+      </button>
+
+      <div class="separator"></div>
+
+      <div v-show="showCreate">
+        <button @click="$store.commit('showHover', 'newFile')" class="action" :aria-label="$t('sidebar.newFile')" :title="$t('sidebar.newFile')">
+          <i class="material-icons">note_add</i>
+          <span>{{ $t('sidebar.newFile') }}</span>
+        </button>
+
+        <button @click="$store.commit('showHover', 'newDir')" class="action" :aria-label="$t('sidebar.newFolder')" :title="$t('sidebar.newFolder')">
+          <i class="material-icons">create_new_folder</i>
+          <span>{{ $t('sidebar.newFolder') }}</span>
+        </button>
+
+        <div class="separator"></div>
+      </div>
+
+      <share-button v-show="showShareButton"></share-button>
+
+      <rename-button v-show="showRenameButton"></rename-button>
+      <copy-button v-show="showCopyButton"></copy-button>
+      <move-button v-show="showMoveButton"></move-button>
+      <download-button></download-button>
+
+      <div class="separator"></div>
+
+      <delete-button v-show="showDeleteButton"></delete-button>
+    </div>
+
     <div v-if="error">
       <not-found v-if="error.message === '404'"></not-found>
       <forbidden v-else-if="error.message === '403'"></forbidden>

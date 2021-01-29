@@ -87,7 +87,7 @@ export default {
       return filesize(this.size)
     },
     humanTime: function () {
-      return moment(this.modified).format('DD/MM/YYYY')//.fromNow()
+      return moment(this.modified).format('DD MMM YYYY')//.fromNow()
     },
     dragStart: function (ev) {
       console.log(ev)

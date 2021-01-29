@@ -25,10 +25,17 @@ export default {
 
       if (this.selectedCount === 1 && !this.req.items[this.selected[0]].isDir) {
         api.download(null, this.req.items[this.selected[0]].url)
-        return
+      } else {
+        let files = []
+
+        for (let i of this.selected) {
+          files.push(this.req.items[i].url)
+        }
+
+        api.download('zip', ...files)
       }
 
-      this.$store.commit('showHover', 'download')
+      //this.$store.commit('showHover', 'download')
     }
   }
 }

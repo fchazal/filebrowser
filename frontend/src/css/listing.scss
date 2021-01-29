@@ -32,12 +32,12 @@
 
   .item[aria-selected=true] {
     color: #fff !important;
-    background-color: rgba($accent-color,0.8) !important;
+    background-color: rgba($accent-color,.8) !important;
   }
   
   .item:hover {
     color: $accent-color;
-    background-color: rgba($accent-color,0.1);
+    background-color: rgba($accent-color,.05);
   }
 
 }
@@ -103,9 +103,8 @@
 		flex-wrap: nowrap;
     justify-content: flex-start;
     
-		position: relative;
-		background-color: #fff;
-		transition: .1s ease background, .1s ease opacity;
+    position: relative;
+    transition: .1s ease background, .1s ease opacity;
 		align-items: center;
 
     width: 100%;
@@ -181,7 +180,7 @@
   margin: 1em auto;
   display: block !important;
   width: 95%;
-  color: rgba(0, 0, 0, 0.3);
+  color: rgba(0,0,0,.3);
   font-weight: 500;
 
   i {
