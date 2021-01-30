@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!loading">
+  <main v-if="!loading">
     <div class="share">
       <div class="share__box share__box__info">
           <div class="share__box__header">
@@ -60,12 +60,12 @@
         </h2>
       </div>
     </div>
-  </div>
-  <div v-else-if="error">
+  </main>
+  <main v-else-if="error">
     <not-found v-if="error.message === '404'"></not-found>
     <forbidden v-else-if="error.message === '403'"></forbidden>
     <internal-error v-else></internal-error>
-  </div>
+  </main>
 </template>
 
 <script>

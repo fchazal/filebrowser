@@ -1,14 +1,8 @@
 @import 'colors';
 
 nav#sidebar {
-	position: fixed;
-  left: 0;
-	top: 4.5em;
-  width: 240px;
-	height: calc(100vh - 4.5em);
-	overflow: auto;
-	
-  padding-top: 0.5em;
+	padding-top: 1px;
+	margin: .5em .5em 0 0;
 
 	.action {
 		display: flex;

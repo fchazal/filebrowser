@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main id="files">
     <div v-if="isListing || error" id="title">
       <div id="breadcrumbs">
         <router-link to="/files">{{ $t('files.home') }}</router-link>
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div id="dropdown" class="active">
+    <div id="dropdown" class="inactive">
       <button class="action" :aria-label="$t('sidebar.preview')" :title="$t('sidebar.preview')">
         <i class="material-icons">remove_red_eye</i>
         <span>{{ $t('sidebar.preview') }}</span>
@@ -91,7 +91,9 @@
         <span>{{ $t('files.loading') }}</span>
       </h2>
     </div>
-  </div>
+
+    <div id="dragged" style="position: absolute; top: -100px"></div>
+  </main>
 </template>
 
 <script>

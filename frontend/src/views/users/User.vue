@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
     <form v-if="loaded" @submit="save" class="card">
       <div class="card-title">
         <h2 v-if="user.id === 0">{{ $t('settings.newUser') }}</h2>
@@ -44,7 +44,7 @@
         </button>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

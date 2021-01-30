@@ -1,0 +1,62 @@
+@import 'colors';
+
+html {
+  color: $main-color;
+  font-size: 13px;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+	
+	width: 100vw;
+  height: 100vh;
+	overflow: hidden;
+	
+	#container {
+		overflow: hidden;
+
+		nav, main {
+			display: flex;
+			overflow-y: auto;
+			overflow-x: hidden;
+			flex-direction: column;
+		}
+
+		nav {
+			width: 240px;
+			flex-shrink: 0;
+		}
+
+		main {
+			#title {
+				display: flex;
+				flex-shrink: 0;
+				align-items: center;
+
+				height: 4.5em;
+				padding: 0 .5em;
+				border-bottom: 1px solid $border-color;
+
+				h2 {
+					flex-grow: 1;
+					flex-shrink: 1;
+
+					align-items: center;
+					font-size: 1.5em;
+					font-weight: 300;
+					white-space: nowrap;
+				}
+
+				div.separator {
+					border-left: 1px solid $border-color;
+					margin: 0 0.5em;
+					height: 2em;
+				}
+			}
+		}
+	}
+}
+

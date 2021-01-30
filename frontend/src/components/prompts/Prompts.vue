@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="prompts">
     <component ref="currentComponent" :is="currentComponent"></component>
     <div v-show="showOverlay" @click="resetPrompts" class="overlay"></div>
   </div>

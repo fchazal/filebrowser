@@ -3,13 +3,7 @@
 .mobile { display: none !important }
 
 header {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
   height: 4.5em;
-  width: 100vw;
-  
   padding: 0.5em;
   
   display: flex;
@@ -45,18 +39,4 @@ header {
       display: flex;
     }
   }
-
-/*
-  >div {
-    display: flex;
-    padding: 0.5em 0.5em 0.5em 1em;
-    align-items: center;
-  }
-
-  >div div {
-    vertical-align: middle;
-    position: relative;
-  }
-*/
-
 }

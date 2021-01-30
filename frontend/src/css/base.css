@@ -1,13 +1,5 @@
-html {
-  font-size: 13px;
-}
 
-body {
-  font-family: 'Roboto', sans-serif;
-  padding-top: 9rem;
-  background-color: #fff;
-  color: #666;
-}
+
 
 * {
   box-sizing: border-box;
@@ -60,11 +52,16 @@ i.spin {
   padding-bottom: 4em;
 }
 
+#container {
+  display: flex;
+}
 
-main {
-  min-height: 1em;
-  margin: 0 0 1em auto;
-  width: calc(100% - 250px);
+#container main {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-grow: 1;
+  overflow: hidden;
 }
 
 #progress {

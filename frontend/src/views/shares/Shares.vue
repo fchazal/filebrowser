@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main id="shares">
     <div id="title">
       <h2>{{ $t('settings.shareManagement') }}</h2>
     </div>
@@ -36,7 +36,7 @@
         </tr>
       </table>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

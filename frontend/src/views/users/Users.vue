@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main id="users">
     <div id="title">
       <h2>{{ $t('settings.users') }}</h2>
 
@@ -14,15 +14,15 @@
     <div class="content full">
       <table>
         <tr>
+          <th></th>
           <th>{{ $t('settings.username') }}</th>
-          <th>{{ $t('settings.admin') }}</th>
           <th>{{ $t('settings.scope') }}</th>
           <th></th>
         </tr>
 
         <tr v-for="user in users" :key="user.id">
+          <td><i v-if="user.perm.admin" class="material-icons" style="color: #d44">verified_user</i><i v-else class="material-icons">account_circle</i></td>
           <td>{{ user.username }}</td>
-          <td><i v-if="user.perm.admin" class="material-icons">done</i><i v-else class="material-icons">close</i></td>
           <td>{{ user.scope }}</td>
           <td class="small">
             <router-link :to="'/users/' + user.id"><i class="material-icons">mode_edit</i></router-link>
@@ -30,7 +30,7 @@
         </tr>
       </table>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>

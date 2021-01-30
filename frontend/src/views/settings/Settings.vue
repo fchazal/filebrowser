@@ -1,5 +1,5 @@
 <template>
-  <div id="settings">
+  <main id="settings">
     <div id="title">
       <h2>Settings</h2>
     </div>
@@ -9,7 +9,7 @@
 
     <h2>Global Users Profile</h2>
     <global></global>
-  </div>
+  </main>
 </template>
 
 <script>

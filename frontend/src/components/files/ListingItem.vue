@@ -212,6 +212,14 @@ export default {
     },
     ctxclick (event) {
       event.preventDefault()
+      let elt = document.getElementById('dropdown')
+      console.log(event)
+      elt.style.top = event.clientY+'px'
+      elt.style.left = event.clientX+'px'
+      elt.classList.toggle('inactive')
+      elt.classList.toggle('active')
+
+
     },
     dblclick () {
       this.open()

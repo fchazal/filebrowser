@@ -7,12 +7,15 @@
 
       <div class="title">{{ this.name }}</div>
 
-      <preview-size-button v-if="isResizeEnabled && this.req.type === 'image'" @change-size="toggleSize" v-bind:size="fullSize" :disabled="loading"></preview-size-button>
+      <preview-size-button v-show="false" v-if="isResizeEnabled && this.req.type === 'image'" @change-size="toggleSize" v-bind:size="fullSize" :disabled="loading"></preview-size-button>
+
+      <download-button :disabled="loading" v-if="user.perm.download"></download-button>
+
       <button @click="openMore" id="more" :aria-label="$t('buttons.more')" :title="$t('buttons.more')" class="action">
         <i class="material-icons">more_vert</i>
       </button>
 
-      <div id="dropdown" :class="{ active : showMore }">
+      <div id="dropdown" v-show="false" :class="{ active : showMore }">
         <rename-button :disabled="loading" v-if="user.perm.rename"></rename-button>
         <delete-button :disabled="loading" v-if="user.perm.delete"></delete-button>
         <download-button :disabled="loading" v-if="user.perm.download"></download-button>

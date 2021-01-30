@@ -1,29 +1,27 @@
 <template>
   <nav id="sidebar" :class="{active}">
-    <template v-if="!isMobile">
-      <div id="drive">
-        <folder-tree uri="/files/" :name="$t('sidebar.home')" icon="cloud"></folder-tree>
-      </div>
+    <div id="drive">
+      <folder-tree uri="/files/" :name="$t('sidebar.home')" icon="cloud"></folder-tree>
+    </div>
 <!--
-      <div v-for="(drive, index) in this.user.drives" :key="index">
-        <router-link class="action" :to="'/files/' + drive.name" :aria-label="drive.name" :title="drive.name">
-          <i class="material-icons">{{ drive.icon }}</i>
-          <span>{{ drive.name }}</span>
-        </router-link>
-      </div>
+    <div v-for="(drive, index) in this.user.drives" :key="index">
+      <router-link class="action" :to="'/files/' + drive.name" :aria-label="drive.name" :title="drive.name">
+        <i class="material-icons">{{ drive.icon }}</i>
+        <span>{{ drive.name }}</span>
+      </router-link>
+    </div>
 -->
-      <div class="separator"></div>
+    <div class="separator"></div>
 
-      <router-link :class="'action' + (this.$store.state.route.name === 'Shares' ? ' active':'')" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">
-        <i class="material-icons">folder_shared</i>
-        <span>{{$t('sidebar.shares')}}</span>
-      </router-link>
+    <router-link :class="'action' + (this.$store.state.route.name === 'Shares' ? ' active':'')" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">
+      <i class="material-icons">folder_shared</i>
+      <span>{{$t('sidebar.shares')}}</span>
+    </router-link>
 
-      <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Users' ? ' active':'')" to="/users" :aria-label="$t('sidebar.users')" :title="$t('sidebar.users')">
-        <i class="material-icons">people</i>
-        <span>{{$t('sidebar.users')}}</span>
-      </router-link>
-    </template>
+    <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Users' ? ' active':'')" to="/users" :aria-label="$t('sidebar.users')" :title="$t('sidebar.users')">
+      <i class="material-icons">people</i>
+      <span>{{$t('sidebar.users')}}</span>
+    </router-link>
   </nav>
 </template>
 

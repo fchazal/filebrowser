@@ -1,15 +1,17 @@
 <template>
-  <div id="container" @contextmenu="ctxclick">
+  <div id="app" @contextmenu="ctxclick">
     <div id="progress">
       <div v-bind:style="{ width: this.progress + '%' }"></div>
     </div>
+    
     <site-header v-if="!isSharing"></site-header>
-    <sidebar v-if="!isSharing"></sidebar>
-    <main>
+
+    <div id="container">
+      <sidebar v-if="!isSharing"></sidebar>
       <router-view></router-view>
-    </main>
+    </div>
+
     <prompts></prompts>
-    <div id="dragged" style="position: absolute; top: -100px">HELLO</div>
   </div>
 </template>
 
