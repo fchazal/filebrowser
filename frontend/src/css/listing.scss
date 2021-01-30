@@ -128,11 +128,17 @@
       text-overflow: ellipsis;
     }
 
-    .size,
     .modified {
       width: 9rem;
       text-align: right;
       padding: 0 0.5em;
+      flex-shrink: 0;
+    }
+
+    .size {
+      width: 7rem;
+      text-align: right;
+      padding: 0 1em;
       flex-shrink: 0;
     }
   }

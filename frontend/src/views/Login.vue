@@ -10,6 +10,8 @@
       <input class="input input--block" v-if="createMode" type="password" v-model="passwordConfirm" :placeholder="$t('login.passwordConfirm')" />
 
       <div v-if="recaptcha" id="recaptcha"></div>
+                <i class="material-icons">login</i>
+
       <input class="button button--block" type="submit" :value="createMode ? $t('login.signup') : $t('login.submit')">
 
       <p @click="toggleMode" v-if="signup">{{ createMode ? $t('login.loginInstead') : $t('login.createAnAccount') }}</p>

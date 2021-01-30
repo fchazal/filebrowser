@@ -28,7 +28,7 @@
 			padding: .2em .4em;
 		}
 
-		span { display: block !important }
+		i+span { display: block !important }
 
 		&:hover {
 			background-color: rgba(0,0,0,.1);
