@@ -1,8 +1,5 @@
 
 @media (max-width: 736px) {
-  body {
-    padding-bottom: 5em;
-  }
 
   nav { display: none !important }
 

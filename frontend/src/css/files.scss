@@ -87,6 +87,9 @@
   
       .name {
         font-weight: 500;
+        overflow: hidden;
+        word-break: break-all;
+        text-overflow: ellipsis;
       }
   
       .size,
@@ -180,9 +183,6 @@
       .name {
         flex-grow: 1;
         white-space: nowrap;
-        
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
   
       .modified {
