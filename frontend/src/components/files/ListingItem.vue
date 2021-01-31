@@ -90,11 +90,9 @@ export default {
       return moment(this.modified).format('DD MMM YYYY')//.fromNow()
     },
     dragStart: function (ev) {
-      console.log(ev)
-
       {
         let element = document.getElementById('dragged')
-        element.innerHTML = `${this.selectedCount} items`
+        element.innerHTML = `moving ${this.selectedCount} items`
         ev.dataTransfer.setDragImage(element, 20, 20)
       }
 
