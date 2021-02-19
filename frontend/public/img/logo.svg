@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>logo</title>
+    <title>icon</title>
     <defs>
         <linearGradient x1="0%" y1="6.89655172%" x2="100%" y2="6.89655172%" id="linearGradient-1">
             <stop stop-color="#DEDDDA" offset="0%"></stop>
@@ -23,14 +23,14 @@
             <stop stop-color="#C0BFBC" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="translate(80.000000, 32.000000)" fill-rule="nonzero">
+    <g id="icon" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo" transform="translate(80.000000, 32.000000)" fill-rule="nonzero">
             <rect id="rect1041" fill="url(#linearGradient-1)" x="0" y="216" width="352" height="232" rx="8.7725897"></rect>
             <rect id="rect15435-6" fill="#F6F5F4" x="0" y="0" width="352" height="432" rx="8.7725897"></rect>
-            <rect id="rect1167" fill="#1A5FB4" x="15" y="24" width="320" height="392" rx="4"></rect>
-            <rect id="rect15441-8" fill="#3584E4" x="15" y="16" width="320" height="392" rx="4"></rect>
-            <rect id="rect15443-6" fill="#1C71D8" x="15" y="144" width="320" height="8"></rect>
-            <rect id="rect15461-2" fill="#1C71D8" x="15" y="272" width="320" height="8"></rect>
+            <rect id="rect1167" fill="#4466AA" x="15" y="24" width="320" height="392" rx="4"></rect>
+            <rect id="rect15441-8" fill="#5588DD" x="15" y="16" width="320" height="392" rx="4"></rect>
+            <rect id="rect15443-6" fill="#4466AA" x="15" y="144" width="320" height="8"></rect>
+            <rect id="rect15461-2" fill="#4466AA" x="15" y="272" width="320" height="8"></rect>
             <g id="g1088" transform="translate(128.000000, 64.000000)">
                 <path d="M12,0 L84,0 C90.648,0 96,4 96,12 L96,32 L80.125,32 L80,16 L16,16 L16.125,32 L0,32 L0,12 C0,5.352 5.352,0 12,0 Z" id="path26035" fill="url(#linearGradient-2)"></path>
                 <rect id="rect1059" fill="#000000" opacity="0.1" x="0" y="24" width="96" height="16"></rect>

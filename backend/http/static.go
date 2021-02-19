@@ -96,7 +96,7 @@ func handleWithStaticData(w http.ResponseWriter, _ *http.Request, d *data, box *
 }
 
 func getStaticHandlers(store *storage.Storage, server *settings.Server) (index, static http.Handler) {
-	box := rice.MustFindBox("../frontend/dist")
+	box := rice.MustFindBox("../../frontend/dist")
 	handler := http.FileServer(box.HTTPBox())
 
 	index = handle(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {

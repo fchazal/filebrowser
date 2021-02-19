@@ -178,11 +178,15 @@ export default {
     },
     click (event) {
       if (this.selectedCount !== 0) event.preventDefault()
-      /*
+
+      let elt = document.getElementById('dropdown')
+      elt.classList.remove('active')
+      elt.classList.add('inactive')
+
       if (this.$store.state.selected.indexOf(this.index) !== -1) {
         this.removeSelected(this.index)
         return
-      }*/
+      }
 
       if (event.shiftKey && this.selected.length > 0) {
         let fi = 0
@@ -209,15 +213,15 @@ export default {
       this.addSelected(this.index)
     },
     ctxclick (event) {
+      if (this.$store.state.selected.indexOf(this.index) == -1)
+        this.click(event)
+
       event.preventDefault()
       let elt = document.getElementById('dropdown')
-      console.log(event)
       elt.style.top = event.clientY+'px'
       elt.style.left = event.clientX+'px'
-      elt.classList.toggle('inactive')
-      elt.classList.toggle('active')
-
-
+      elt.classList.remove('inactive')
+      elt.classList.add('active')
     },
     dblclick () {
       this.open()

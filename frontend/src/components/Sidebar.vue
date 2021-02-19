@@ -3,14 +3,11 @@
     <div id="drive">
       <folder-tree uri="/files/" :name="$t('sidebar.home')" icon="cloud"></folder-tree>
     </div>
-<!--
-    <div v-for="(drive, index) in this.user.drives" :key="index">
-      <router-link class="action" :to="'/files/' + drive.name" :aria-label="drive.name" :title="drive.name">
-        <i class="material-icons">{{ drive.icon }}</i>
-        <span>{{ drive.name }}</span>
-      </router-link>
+
+    <div id="trash">
+      <folder-tree uri="/trash/" :name="$t('sidebar.trash')" icon="delete"></folder-tree>
     </div>
--->
+
     <div class="separator"></div>
 
     <router-link :class="'action' + (this.$store.state.route.name === 'Shares' ? ' active':'')" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">
@@ -21,6 +18,11 @@
     <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Users' ? ' active':'')" to="/users" :aria-label="$t('sidebar.users')" :title="$t('sidebar.users')">
       <i class="material-icons">people</i>
       <span>{{$t('sidebar.users')}}</span>
+    </router-link>
+
+    <router-link :class="'action' + (this.$store.state.route.name === 'Global' ? ' active':'')" to="/settings" :aria-label="$t('sidebar.settings')" :title="$t('sidebar.settings')">
+      <i class="material-icons">settings</i>
+      <span>{{$t('sidebar.settings')}}</span>
     </router-link>
   </nav>
 </template>
