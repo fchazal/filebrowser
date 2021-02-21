@@ -1,11 +1,11 @@
 <template>
-  <main>
-    <form v-if="loaded" @submit="save" class="card">
-      <div class="card-title">
+  <main id="settings" v-if="settings !== null">
+    <div id="title">
         <h2 v-if="user.id === 0">{{ $t('settings.newUser') }}</h2>
-        <h2 v-else>{{ $t('settings.user') }} {{ user.username }}</h2>
-      </div>
+        <h2 v-else>{{ $t('settings.user') }} "{{ user.username }}" Settings</h2>
+    </div>
 
+    <form v-if="loaded" @submit="save" class="card">
       <div class="card-content">
         <user-form :user.sync="user" :isDefault="false" :isNew="isNew" />
       </div>

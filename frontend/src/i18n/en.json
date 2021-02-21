@@ -1,4 +1,8 @@
 {
+  "titlebar": {
+    "profile": "User profile",
+    "logout": "Logout"
+  },
   "buttons": {
     "cancel": "Cancel",
     "close": "Close",
@@ -233,19 +237,11 @@
     "users": "Users"
   },
   "sidebar": {
-    "help": "Help",
-    "login": "Login",
-    "logout": "Logout",
     "home": "My Drive",
-    "newFile": "New file",
-    "newFolder": "New folder",
-    "preview": "Preview",
-    "signup": "Signup",
-    "siteSettings": "Site Settings",
-    "settings": "Global Settings",
-    "shares": "Shares Management",
     "users": "Users Management",
-    "upload": "Upload files"
+    "shares": "Shares Management",
+    "settings": "Application Settings",
+    "trash": "Trash Bin"
   },
   "success": {
     "linkCopied": "Link copied!"

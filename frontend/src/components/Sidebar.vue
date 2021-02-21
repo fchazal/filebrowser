@@ -3,11 +3,11 @@
     <div id="drive">
       <folder-tree uri="/files/" :name="$t('sidebar.home')" icon="cloud"></folder-tree>
     </div>
-
+<!--
     <div id="trash">
       <folder-tree uri="/trash/" :name="$t('sidebar.trash')" icon="delete"></folder-tree>
     </div>
-
+-->
     <div class="separator"></div>
 
     <router-link :class="'action' + (this.$store.state.route.name === 'Shares' ? ' active':'')" to="/shares" :aria-label="$t('sidebar.shares')" :title="$t('sidebar.shares')">

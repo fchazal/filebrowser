@@ -7,7 +7,6 @@ import Share from '@/views/shares/Share'
 import Shares from '@/views/shares/Shares'
 import User from '@/views/users/User'
 import Users from '@/views/users/Users'
-import Settings from '@/views/settings/Settings'
 import GlobalSettings from '@/views/settings/Global'
 import ProfileSettings from '@/views/settings/Profile'
 import Error403 from '@/views/errors/403'
@@ -53,30 +52,20 @@ const router = new Router({
           }
         },
         {
-          path: '/settings',
-          name: 'Settings',
-          component: Settings,
-          redirect: {
-            path: '/settings/profile'
-          },
+          path: '/profile',
+          name: 'Profile',
+          component: ProfileSettings,
           meta: {
             requiresAuth: true
-          },
-          children: [
-            {
-              path: '/settings/profile',
-              name: 'Profile Settings',
-              component: ProfileSettings
-            },
-            {
-              path: '/settings/global',
-              name: 'Global Settings',
-              component: GlobalSettings,
-              meta: {
-                requiresAdmin: true
-              }
-            } 
-          ]
+          }
+        },
+        {
+          path: '/settings',
+          name: 'Settings',
+          component: GlobalSettings,
+          meta: {
+            requiresAuth: true
+          }
         },
         {
           path: '/shares',

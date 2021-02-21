@@ -1,5 +1,20 @@
 <template>
-  <div class="dashboard">
+  <main id="settings">
+    <div id="title">
+      <h2>Profile Settings</h2>
+    </div>
+
+    <form @submit.prevent="save">
+      <h2>{{ $t('settings.profileSettings') }}</h2>
+      <button type="submit" class="action">
+        <i class="material-icons">check</i>
+      </button>
+
+      <div class="content">
+        <user-form :user.sync="me" :isDefault="false" :isNew="false" />
+      </div>
+    </form>
+
     <form @submit="updateSettings">
       <h2>{{ $t('settings.profileSettings') }}</h2>
       <button type="submit" class="action">
@@ -26,17 +41,19 @@
         <input :class="passwordClass" type="password" :placeholder="$t('settings.newPasswordConfirm')" v-model="passwordConf" name="password">
       </div>
     </form>
-  </div>
+  </main>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { users as api } from '@/api'
+import UserForm from '@/components/settings/UserForm'
 import Languages from '@/components/settings/Languages'
 
 export default {
   name: 'settings',
   components: {
+    UserForm,
     Languages
   },
   data: function () {
@@ -45,7 +62,8 @@ export default {
       passwordConf: '',
       hideDotfiles: false,
       singleClick: false,
-      locale: ''
+      locale: '',
+      me: {}
     }
   },
   computed: {
@@ -68,9 +86,15 @@ export default {
     this.locale = this.user.locale
     this.hideDotfiles = this.user.hideDotfiles
     this.singleClick = this.user.singleClick
+    this.fetchData()
   },
   methods: {
     ...mapMutations([ 'updateUser' ]),
+     async fetchData () {
+      const id = this.user.id
+      this.me = { ...await api.get(id) }
+      console.log(this.me)
+    },
     async updatePassword (event) {
       event.preventDefault()
 

@@ -1,5 +1,9 @@
 <template>
-  <div class="dashboard" v-if="settings !== null">
+  <main id="settings" v-if="settings !== null">
+    <div id="title">
+      <h2>Application Settings</h2>
+    </div>
+
     <form @submit.prevent="save">
       <h2>{{ $t('settings.globalSettings') }}</h2>
       <button type="submit" class="action">
@@ -11,15 +15,7 @@
 
         <p><input type="checkbox" v-model="settings.createUserDir"> {{ $t('settings.createUserDir') }}</p>
 
-        <h3>{{ $t('settings.rules') }}</h3>
-        <p class="small">{{ $t('settings.globalRules') }}</p>
-        <rules :rules.sync="settings.rules" />
-
         <h3>{{ $t('settings.branding') }}</h3>
-
-        <i18n path="settings.brandingHelp" tag="p" class="small">
-          <a class="link" target="_blank" href="https://filebrowser.org/configuration/custom-branding">{{ $t('settings.documentation') }}</a>
-        </i18n>
 
         <p>
           <label for="branding-name">{{ $t('settings.instanceName') }}</label>
@@ -30,6 +26,11 @@
           <label for="branding-files">{{ $t('settings.brandingDirectoryPath') }}</label>
           <input class="input input--block" type="text" v-model="settings.branding.files" id="branding-files" />
         </p>
+
+        <h3>{{ $t('settings.rules') }}</h3>
+        
+        <p class="small">{{ $t('settings.globalRules') }}</p>
+        <rules :rules.sync="settings.rules" />
       </div>
     </form>
 
@@ -71,7 +72,7 @@
         </div>
       </div>
     </form>
-  </div>
+  </main>
 </template>
 
 <script>

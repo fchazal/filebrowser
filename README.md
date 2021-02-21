@@ -12,3 +12,4 @@ go get github.com/GeertJohan/go.rice/rice
 
 cd http
 ~/go/bin/rice append --exec ../filebrowser
+

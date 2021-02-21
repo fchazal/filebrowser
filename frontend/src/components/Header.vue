@@ -19,11 +19,11 @@
     -->
 
     <div class="right">
-      <router-link class="action" to="/settings" :aria-label="$t('sidebar.settings')" :title="$t('sidebar.settings')">
+      <router-link class="action" to="/profile" :aria-label="$t('titlebar.profile')" :title="$t('titlebar.profile')">
         <i class="material-icons">settings</i>
       </router-link>
 
-      <button v-if="authMethod == 'json'" @click="logout" class="action" id="logout" :aria-label="$t('sidebar.logout')" :title="$t('sidebar.logout')">
+      <button v-if="authMethod == 'json'" @click="logout" class="action" id="logout" :aria-label="$t('titlebar.logout')" :title="$t('titlebar.logout')">
         <i class="material-icons">exit_to_app</i>
       </button>
     </div>

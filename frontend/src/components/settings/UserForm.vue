@@ -6,6 +6,10 @@
     </p>
 
     <p v-if="!isDefault">
+      <input type="checkbox" :disabled="user.perm.admin" v-model="user.lockPassword"> {{ $t('settings.lockPassword') }}
+    </p>
+    
+    <p v-if="!isDefault">
       <label for="password">{{ $t('settings.password') }}</label>
       <input class="input input--block" type="password" :placeholder="passwordPlaceholder" v-model="user.password" id="password">
     </p>
@@ -20,14 +24,13 @@
       <languages class="input input--block" id="locale" :locale.sync="user.locale"></languages>
     </p>
 
-    <p v-if="!isDefault">
-      <input type="checkbox" :disabled="user.perm.admin" v-model="user.lockPassword"> {{ $t('settings.lockPassword') }}
+    <p>
+      <input type="checkbox" v-model="user.hideDotfiles"> {{ $t('settings.hideDotfiles') }}
     </p>
-
-    <div v-if="!isDefault">
-      <h3>{{ $t('settings.drives') }}</h3>
-      <drives :drives.sync="user.drives" />
-    </div>
+    
+    <p>
+      <input type="checkbox" v-model="user.singleClick"> {{ $t('settings.singleClick') }}
+    </p>
 
     <permissions :perm.sync="user.perm" />
 
@@ -42,7 +45,6 @@
 <script>
 import Languages from './Languages'
 import Rules from './Rules'
-import Drives from './Drives'
 import Permissions from './Permissions'
 import { enableExec } from '@/utils/constants'
 
@@ -52,7 +54,6 @@ export default {
     Permissions,
     Languages,
     Rules,
-    Drives,
   },
   props: [ 'user', 'isNew', 'isDefault' ],
   computed: {
