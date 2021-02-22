@@ -1,7 +1,7 @@
-@import 'colors';
+.mobile { display: none !important }
 
-html {
-  color: $main-color;
+body {
+  color: var(--main-color);
   font-size: 13px;
   font-family: 'Roboto', sans-serif;
   background-color: white;
@@ -13,53 +13,92 @@ html {
 	
 	width: 100vw;
   height: 100vh;
+}
+
+#app>header {
+  height: 4.5em;
+  padding: 0.5em;
+  
+  display: flex;
+  align-items: center;
+
+  background-color: white;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 0 5px var(--shadow-color);
+  
+  .left, .right {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+  }
+
+  div.left {
+    img {
+      height: 3.5em;
+      margin: 0 0.5em;
+    }
+  
+    h1 {
+      font-weight: 300;
+      font-size: 2em;
+      margin: 0 0.25em;
+    }  
+  }
+
+  div.right {
+    justify-content: flex-end;
+
+    div {
+      display: flex;
+    }
+  }
+}
+
+#app>main {
+  display: flex;
 	overflow: hidden;
-	
-	#container {
-		overflow: hidden;
 
-		nav, main {
+	article, article>form {
+		display: flex;
+    overflow: hidden;
+
+		align-items: stretch;
+		flex-direction: column;
+
+		flex-grow: 1;
+
+		header {
 			display: flex;
-			overflow-y: auto;
-			overflow-x: hidden;
-			flex-direction: column;
-		}
-
-		nav {
-			width: 240px;
 			flex-shrink: 0;
-		}
+			align-items: center;
 
-		main {
-			#title {
-				display: flex;
-				flex-shrink: 0;
+			height: 4.5em;
+			padding: 0 .5em;
+			border-bottom: 1px solid var(--border-color);
+
+			h1 {
+				flex-grow: 1;
+				flex-shrink: 1;
 				align-items: center;
-
-				height: 4.5em;
-				padding: 0 .5em;
-				border-bottom: 1px solid $border-color;
-
-				h2 {
-					flex-grow: 1;
-					flex-shrink: 1;
-					align-items: center;
-					
-					font-size: 1.5em;
-					font-weight: 300;
-					text-align: left;
-					white-space: nowrap;
-				}
-
-				.separator {
-					border-left: 1px solid $border-color;
-					margin: 0 0.5em;
-					height: 2em;
-				}
-
-				.action span { display: none }
+				
+				font-size: 1.5em;
+				font-weight: 300;
+				text-align: left;
+				white-space: nowrap;
 			}
+
+			.separator {
+				border-left: 1px solid var(--border-color);
+				margin: 0 0.5em;
+				height: 2em;
+			}
+
+			.action span { display: none }
 		}
+
+    main {
+      overflow-y: auto;
+    }
 	}
 }
 

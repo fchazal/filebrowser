@@ -310,8 +310,8 @@ export default {
     },
     resizeEvent () {
       // Update the columns size based on the window width.
-      let columns = Math.floor(document.querySelector('main').offsetWidth / 300)
-      let items = css(['#files #listing.mosaic .item'])
+      let columns = Math.floor(document.querySelector('article').offsetWidth / 300)
+      let items = css(['article#files #listing.mosaic .item'])
       if (columns === 0) columns = 1
       
       items.style.width = `calc(${100 / columns}% - 1em)`

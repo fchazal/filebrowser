@@ -1,20 +1,21 @@
 <template>
-  <main id="settings">
-    <div id="title">
-      <h2>Profile Settings</h2>
-    </div>
+  <article id="settings">
+  <form @submit.prevent="save">
+    <header>
+      <h1>{{ $t('settings.profileSettings') }}</h1>
 
-    <form @submit.prevent="save">
-      <h2>{{ $t('settings.profileSettings') }}</h2>
       <button type="submit" class="action">
-        <i class="material-icons">check</i>
+        <i class="material-icons">save</i>
       </button>
-
-      <div class="content">
+    </header>
+  
+    <main>
+      <fieldset>
         <user-form :user.sync="me" :isDefault="false" :isNew="false" />
-      </div>
-    </form>
+      </fieldset>
+    </main>
 
+<!--
     <form @submit="updateSettings">
       <h2>{{ $t('settings.profileSettings') }}</h2>
       <button type="submit" class="action">
@@ -41,20 +42,20 @@
         <input :class="passwordClass" type="password" :placeholder="$t('settings.newPasswordConfirm')" v-model="passwordConf" name="password">
       </div>
     </form>
-  </main>
+-->
+  </form>
+  </article>
 </template>
 
 <script>
 import { mapState, mapMutations } from 'vuex'
 import { users as api } from '@/api'
 import UserForm from '@/components/settings/UserForm'
-import Languages from '@/components/settings/Languages'
 
 export default {
   name: 'settings',
   components: {
-    UserForm,
-    Languages
+    UserForm
   },
   data: function () {
     return {

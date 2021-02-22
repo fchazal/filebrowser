@@ -52,7 +52,7 @@ func (s *Storage) Save(set *Settings) error {
 	}
 
 	if set.Defaults.ViewMode == "" {
-		set.Defaults.ViewMode = users.MosaicViewMode
+		set.Defaults.ViewMode = users.ListViewMode
 	}
 
 	if set.Rules == nil {

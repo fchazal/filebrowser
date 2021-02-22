@@ -100,7 +100,7 @@ export default {
       listing: null,
       name: '',
       subtitles: [],
-      fullSize: false
+      fullSize: true //preview is too slow on small servers
     }
   },
   computed: {

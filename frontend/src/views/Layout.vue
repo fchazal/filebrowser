@@ -6,10 +6,10 @@
     
     <site-header v-if="!isSharing"></site-header>
 
-    <div id="container">
+    <main id="container">
       <sidebar v-if="!isSharing"></sidebar>
       <router-view></router-view>
-    </div>
+    </main>
 
     <prompts></prompts>
   </div>

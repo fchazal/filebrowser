@@ -1,6 +1,6 @@
 <template>
-  <main id="files">
-    <div v-if="isListing || error" id="title">
+  <article id="files">
+    <header v-if="isListing || error" id="title">
       <div id="breadcrumbs">
         <router-link to="/files">{{ $t('files.home') }}</router-link>
         
@@ -41,7 +41,7 @@
           <info-button v-show="isFiles"></info-button>
         </div>
       </div>
-    </div>
+    </header>
 
     <div id="dropdown" class="inactive">
       <button class="action" :aria-label="$t('sidebar.preview')" :title="$t('sidebar.preview')">
@@ -93,7 +93,7 @@
     </div>
 
     <div id="dragged" style="position: absolute; top: -100px"></div>
-  </main>
+  </article>
 </template>
 
 <script>

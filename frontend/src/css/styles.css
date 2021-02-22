@@ -7,13 +7,12 @@
 @import "./_buttons.css";
 @import "./_inputs.css";
 @import "./_share.css";
+@import "./_fonts.css";
+@import "./_global.css";
 
 
 @import "./application.css";
 
-@import "./fonts.css";
-@import "./base.css";
-@import "./header.css";
 @import "./sidebar.css";
 @import "./prompts.css";
 

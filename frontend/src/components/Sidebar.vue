@@ -1,5 +1,5 @@
 <template>
-  <nav id="sidebar" :class="{active}">
+  <aside id="sidebar" :class="{active}">
     <div id="drive">
       <folder-tree uri="/files/" :name="$t('sidebar.home')" icon="cloud"></folder-tree>
     </div>
@@ -20,11 +20,11 @@
       <span>{{$t('sidebar.users')}}</span>
     </router-link>
 
-    <router-link :class="'action' + (this.$store.state.route.name === 'Global' ? ' active':'')" to="/settings" :aria-label="$t('sidebar.settings')" :title="$t('sidebar.settings')">
+    <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Global' ? ' active':'')" to="/settings" :aria-label="$t('sidebar.settings')" :title="$t('sidebar.settings')">
       <i class="material-icons">settings</i>
       <span>{{$t('sidebar.settings')}}</span>
     </router-link>
-  </nav>
+  </aside>
 </template>
 
 <script>

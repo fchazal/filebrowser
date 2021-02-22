@@ -1,7 +1,20 @@
 :root {
   --blue: #38e;
   --dark-blue: #38e;
+
   --red: #F44336;
   --dark-red: #D32F2F;
+
   --moon-grey: #f2f2f2;
+
+  /**/
+  --main-color: #666;
+  --main-color-1: #6661;
+  --main-color-0: #66666608;
+
+  --accent-color: #38d;
+  --accent-color-1: #38d1;
+
+  --shadow-color: #0002;
+  --border-color: #0002;
 }

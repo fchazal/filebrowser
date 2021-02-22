@@ -7,7 +7,7 @@
 
       <template v-if="!isMobile">
         <img :src="logoURL" :alt="name">
-        <h2>{{ name }}</h2>
+        <h1>{{ name }}</h1>
       </template>
     </div>
 

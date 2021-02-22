@@ -1,9 +1,8 @@
-@import 'colors';
 
-#files {
+article#files {
   overflow: hidden;
 
-  #title {
+  header {
     >#breadcrumbs {
       display: flex;
       flex-grow: 1;
@@ -54,7 +53,7 @@
       }
   
       .separator {
-        border-left: 1px solid $border-color;
+        border-left: 1px solid --border-color;
         margin: 0 0.5em;
         height: 2em;
       }
@@ -100,12 +99,12 @@
   
     .item[aria-selected=true] {
       color: #fff !important;
-      background-color: rgba($accent-color,.8) !important;
+      background-color: rgba(--accent-color,.8) !important;
     }
     
     .item:hover {
-      color: $accent-color;
-      background-color: rgba($accent-color,.05);
+      color: --accent-color;
+      background-color: rgba(--accent-color,.05);
     }
   
   }
@@ -225,7 +224,7 @@
       margin: .5em;
       padding: .5em;
       border-radius: .5em;
-      border: 1px solid $border-color;
+      border: 1px solid --border-color;
   
       .icon {
         padding: 0.5rem 1rem;
@@ -243,7 +242,7 @@
     padding: 0.8em 1.2em;
     
     border-radius: 0.3em;
-    background: $accent-color;
+    background: --accent-color;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
   }
 
