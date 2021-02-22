@@ -1,14 +1,21 @@
 <template>
-  <main id="settings" v-if="settings !== null">
-    <div id="title">
-        <h2 v-if="user.id === 0">{{ $t('settings.newUser') }}</h2>
-        <h2 v-else>{{ $t('settings.user') }} "{{ user.username }}" Settings</h2>
-    </div>
+  <article id="settings" v-if="settings !== null">
+  <form v-if="loaded" @submit.prevent="save">
+    <header>
+      <button class="action">
+        <i class="material-icons">arrow_back</i>
+      </button>
 
-    <form v-if="loaded" @submit="save" class="card">
-      <div class="card-content">
-        <user-form :user.sync="user" :isDefault="false" :isNew="isNew" />
-      </div>
+      <h1 v-if="user.id === 0">{{ $t('settings.newUser') }}</h1>
+      <h1 v-else>{{ $t('settings.user') }} <i>{{ user.username }}</i></h1>
+
+      <button type="submit" class="action">
+        <i class="material-icons">save</i>
+      </button>
+
+      <button class="action red">
+        <i class="material-icons">delete</i>
+      </button>
 
       <div class="card-action">
         <button
@@ -23,28 +30,35 @@
           type="submit"
           :value="$t('buttons.save')">
       </div>
-    </form>
+    </header>
 
-    <div v-if="$store.state.show === 'deleteUser'" class="card floating">
-      <div class="card-content">
-        <p>Are you sure you want to delete this user?</p>
-      </div>
+    <main>
+      <fieldset>
+        <user-form :user.sync="user" :isDefault="false" :isNew="isNew" />
+      </fieldset>
+    </main>
+  </form>
 
-      <div class="card-action">
-        <button class="button button--flat button--grey"
-          @click="closeHovers"
-          v-focus
-          :aria-label="$t('buttons.cancel')"
-          :title="$t('buttons.cancel')">
-          {{ $t('buttons.cancel') }}
-        </button>
-        <button class="button button--flat"
-          @click="deleteUser">
-          {{ $t('buttons.delete') }}
-        </button>
-      </div>
+  <div v-if="$store.state.show === 'deleteUser'" class="card floating">
+    <div class="card-content">
+      <p>Are you sure you want to delete this user?</p>
     </div>
-  </main>
+
+    <div class="card-action">
+      <button class="button button--flat button--grey"
+        @click="closeHovers"
+        v-focus
+        :aria-label="$t('buttons.cancel')"
+        :title="$t('buttons.cancel')">
+        {{ $t('buttons.cancel') }}
+      </button>
+      <button class="button button--flat"
+        @click="deleteUser">
+        {{ $t('buttons.delete') }}
+      </button>
+    </div>
+  </div>
+  </article>
 </template>
 
 <script>

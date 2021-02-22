@@ -20,7 +20,7 @@
       <span>{{$t('sidebar.users')}}</span>
     </router-link>
 
-    <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Global' ? ' active':'')" to="/settings" :aria-label="$t('sidebar.settings')" :title="$t('sidebar.settings')">
+    <router-link v-if="user.perm.admin" :class="'action' + (this.$store.state.route.name === 'Settings' ? ' active':'')" to="/settings" :aria-label="$t('sidebar.settings')" :title="$t('sidebar.settings')">
       <i class="material-icons">settings</i>
       <span>{{$t('sidebar.settings')}}</span>
     </router-link>

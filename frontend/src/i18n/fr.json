@@ -223,10 +223,10 @@
     "userCreated": "Utilisateur créé !",
     "userDefaults": "User default settings",
     "userDeleted": "Utilisateur supprimé !",
-    "userManagement": "Gestion des utilisateurs",
     "userUpdated": "Utilisateur mis à jour !",
     "username": "Nom d'utilisateur",
-    "users": "Utilisateurs"
+    "users": "Utilisateurs",
+    "usersManagement": "Gestion des utilisateurs"
   },
   "sidebar": {
     "help": "Aide",

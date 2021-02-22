@@ -2,7 +2,7 @@
   <article id="settings" v-if="settings !== null">
   <form @submit.prevent="save">
     <header id="title">
-      <h1>{{ $t('settings.globalSettings') }}</h1>
+      <h1>{{ $t('sidebar.settings') }}</h1>
 
       <button type="submit" class="action">
         <i class="material-icons">save</i>
@@ -18,18 +18,12 @@
           <input class="input input--block" type="text" v-model="settings.branding.name">
         </label>
 
-        <label>
-          {{ $t('settings.rootFolder') }}
-          <input class="input input--block" type="text">
-        </label>
-        <!--
         <label for="branding-files">
           {{ $t('settings.brandingDirectoryPath') }}
           <input class="input input--block" type="text" v-model="settings.branding.files" id="branding-files" />
         </label>
-        -->
 
-        <h3>{{ $t('settings.userManagement') }}</h3>
+        <h3>{{ $t('settings.usersManagement') }}</h3>
         <label><input type="checkbox" v-model="settings.signup"> {{ $t('settings.allowSignup') }}</label>
         <label><input type="checkbox" v-model="settings.createUserDir"> {{ $t('settings.createUserDir') }}</label>
       </fieldset>

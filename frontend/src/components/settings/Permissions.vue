@@ -3,14 +3,40 @@
     <h3>{{ $t('settings.permissions') }}</h3>
     <p class="small">{{ $t('settings.permissionsHelp') }}</p>
 
-    <p><input type="checkbox" v-model="admin"> {{ $t('settings.administrator') }}</p>
+    <label>
+      <input type="checkbox" v-model="admin">
+      {{ $t('settings.administrator') }}
+    </label>
 
-    <p><input type="checkbox" :disabled="admin" v-model="perm.create"> {{ $t('settings.perm.create') }}</p>
-    <p><input type="checkbox" :disabled="admin" v-model="perm.delete"> {{ $t('settings.perm.delete') }}</p>
-    <p><input type="checkbox" :disabled="admin" v-model="perm.download"> {{ $t('settings.perm.download') }}</p>
-    <p><input type="checkbox" :disabled="admin" v-model="perm.modify"> {{ $t('settings.perm.modify') }}</p>
-    <p><input type="checkbox" :disabled="admin" v-model="perm.rename"> {{ $t('settings.perm.rename') }}</p>
-    <p><input type="checkbox" :disabled="admin" v-model="perm.share"> {{ $t('settings.perm.share') }}</p>
+    <label>
+      <input type="checkbox" :disabled="admin" v-model="perm.create">
+      {{ $t('settings.perm.create') }}
+    </label>
+
+    <label>
+      <input type="checkbox" :disabled="admin" v-model="perm.delete">
+      {{ $t('settings.perm.delete') }}
+    </label>
+
+    <label>
+      <input type="checkbox" :disabled="admin" v-model="perm.download">
+      {{ $t('settings.perm.download') }}
+    </label>
+
+    <label>
+      <input type="checkbox" :disabled="admin" v-model="perm.modify">
+      {{ $t('settings.perm.modify') }}
+    </label>
+
+    <label>
+      <input type="checkbox" :disabled="admin" v-model="perm.rename">
+      {{ $t('settings.perm.rename') }}
+    </label>
+
+    <label>
+      <input type="checkbox" :disabled="admin" v-model="perm.share">
+      {{ $t('settings.perm.share') }}
+    </label>
   </div>
 </template>
 

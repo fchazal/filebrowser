@@ -1,36 +1,39 @@
 <template>
   <div>
-    <p v-if="!isDefault">
-      <label for="username">{{ $t('settings.username') }}</label>
-      <input class="input input--block" type="text" v-model="user.username" id="username">
-    </p>
+    <label v-if="!isDefault">
+      {{ $t('settings.username') }}
+      <input class="input input--block" type="text" v-model="user.username">
+    </label>
 
-    <p v-if="!isDefault">
-      <input type="checkbox" :disabled="user.perm.admin" v-model="user.lockPassword"> {{ $t('settings.lockPassword') }}
-    </p>
+    <label v-if="!isDefault">
+      <input type="checkbox" :disabled="user.perm.admin" v-model="user.lockPassword">
+      {{ $t('settings.lockPassword') }}
+    </label>
     
-    <p v-if="!isDefault">
-      <label for="password">{{ $t('settings.password') }}</label>
+    <label v-if="!isDefault" for="password">
+      {{ $t('settings.password') }}
       <input class="input input--block" type="password" :placeholder="passwordPlaceholder" v-model="user.password" id="password">
-    </p>
+    </label>
 
-    <p>
-      <label for="scope">{{ $t('settings.scope') }}</label>
+    <label for="scope">
+      {{ $t('settings.scope') }}
       <input class="input input--block" type="text" v-model="user.scope" id="scope">
-    </p>
+    </label>
 
-    <p>
-      <label for="locale">{{ $t('settings.language') }}</label>
+    <label for="locale">
+      {{ $t('settings.language') }}
       <languages class="input input--block" id="locale" :locale.sync="user.locale"></languages>
-    </p>
-
-    <p>
-      <input type="checkbox" v-model="user.hideDotfiles"> {{ $t('settings.hideDotfiles') }}
-    </p>
+    </label>
+  
+    <label>
+      <input type="checkbox" v-model="user.hideDotfiles">
+      {{ $t('settings.hideDotfiles') }}
+    </label>
     
-    <p>
-      <input type="checkbox" v-model="user.singleClick"> {{ $t('settings.singleClick') }}
-    </p>
+    <label>
+      <input type="checkbox" v-model="user.singleClick">
+      {{ $t('settings.singleClick') }}
+    </label>
 
     <permissions :perm.sync="user.perm" />
 

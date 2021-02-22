@@ -4,6 +4,7 @@
     "logout": "Logout"
   },
   "buttons": {
+    "addRule": "Add new rule",
     "cancel": "Cancel",
     "close": "Close",
     "copy": "Copy",
@@ -231,10 +232,10 @@
     "userCreated": "User created!",
     "userDefaults": "User default settings",
     "userDeleted": "User deleted!",
-    "userManagement": "User Management",
     "userUpdated": "User updated!",
     "username": "Username",
-    "users": "Users"
+    "users": "Users",
+    "usersManagement": "Users Management"
   },
   "sidebar": {
     "home": "My Drive",

@@ -1,10 +1,10 @@
 <template>
-  <main id="shares">
-    <div id="title">
-      <h2>{{ $t('settings.shareManagement') }}</h2>
-    </div>
+  <article id="shares">
+    <header>
+      <h1>{{ $t('sidebar.shares') }}</h1>
+    </header>
 
-    <div class="content full">
+    <main class="content full">
       <table>
         <tr>
           <th>{{ $t('settings.path') }}</th>
@@ -22,7 +22,7 @@
           </td>
           <td v-if="user.perm.admin">{{ link.username }}</td>
           <td class="small">
-            <button class="action"
+            <button class="action red"
                     @click="deleteLink($event, link)"
                     :aria-label="$t('buttons.delete')"
                     :title="$t('buttons.delete')"><i class="material-icons">delete</i></button>
@@ -35,8 +35,8 @@
           </td>
         </tr>
       </table>
-    </div>
-  </main>
+    </main>
+  </article>
 </template>
 
 <script>

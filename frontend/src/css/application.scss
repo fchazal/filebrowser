@@ -102,3 +102,40 @@ body {
 	}
 }
 
+
+
+article#users {
+  main {
+    display: flex;
+
+		align-items: stretch;
+		flex-direction: row;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 30%;
+      padding: 1em;
+      margin: 1em;
+
+      border-radius: .5em;
+      border: 1px solid var(--main-color-1);
+      background-color: var(--main-color-0);
+      
+      font-weight: 500;
+
+      small {
+        font-size: .8em;
+        font-weight: normal;
+      }
+
+      &:hover {
+        color: white;
+        border: 1px solid var(--accent-color);
+        background-color: var(--accent-color);
+      }
+    }
+  }
+}
