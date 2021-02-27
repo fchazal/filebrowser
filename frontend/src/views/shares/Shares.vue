@@ -4,8 +4,16 @@
       <h1>{{ $t('sidebar.shares') }}</h1>
     </header>
 
-    <main class="content full">
-      <table>
+    <main>
+
+      <div v-if="links.length == 0">
+        <h2 class="message">
+          <i class="material-icons">not_interested</i>
+          <span>{{ $t('files.empty') }}</span>
+        </h2>
+      </div>
+
+      <table v-else>
         <tr>
           <th>{{ $t('settings.path') }}</th>
           <th>{{ $t('settings.shareDuration') }}</th>

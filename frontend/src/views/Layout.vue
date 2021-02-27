@@ -17,7 +17,7 @@
 
 <script>
 import { mapState, mapGetters } from 'vuex'
-import Sidebar from '@/components/Sidebar'
+import Sidebar from '@/components/sidebar/Sidebar'
 import Prompts from '@/components/prompts/Prompts'
 import SiteHeader from '@/components/Header'
 import { enableExec } from '@/utils/constants'

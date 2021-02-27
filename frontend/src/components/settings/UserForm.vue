@@ -30,11 +30,6 @@
       {{ $t('settings.hideDotfiles') }}
     </label>
     
-    <label>
-      <input type="checkbox" v-model="user.singleClick">
-      {{ $t('settings.singleClick') }}
-    </label>
-
     <permissions :perm.sync="user.perm" />
 
     <div v-if="!isDefault">

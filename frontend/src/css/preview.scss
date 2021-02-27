@@ -85,10 +85,13 @@
 }
 
 #previewer .preview {
+  display: flex;
   position: relative;
   margin: 0;
   text-align: center;
   height: calc(100vh - 4.4em);
+  align-items: center;
+  justify-content: center;
 }
 
 #previewer .preview pre {
@@ -118,7 +121,10 @@
 }
 
 #previewer h2.message {
-  color: rgba(255, 255, 255, 0.5)
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 2em;
+  font-weight: 100;
+  i { display: block; }
 }
 
 #previewer>button {

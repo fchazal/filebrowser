@@ -2,7 +2,7 @@
   <article id="settings" v-if="settings !== null">
   <form v-if="loaded" @submit.prevent="save">
     <header>
-      <button class="action">
+      <button @click.prevent="$router.back()" class="action">
         <i class="material-icons">arrow_back</i>
       </button>
 

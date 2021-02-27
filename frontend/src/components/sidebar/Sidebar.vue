@@ -24,13 +24,17 @@
       <i class="material-icons">settings</i>
       <span>{{$t('sidebar.settings')}}</span>
     </router-link>
+
+    <disk-usage></disk-usage>
   </aside>
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex'
 import { version, signup, disableExternal, noAuth, authMethod } from '@/utils/constants'
-import FolderTree from './files/FolderTree.vue'
+
+import FolderTree from './FolderTree.vue'
+import DiskUsage from './DiskUsage.vue'
 
 export default {
   name: 'sidebar',
@@ -40,7 +44,8 @@ export default {
     dest: null
   }},
   components: {
-    FolderTree
+    FolderTree,
+    DiskUsage
   },
   created () {
     window.addEventListener('resize', () => {

@@ -55,8 +55,8 @@
       </div>
       <div v-else-if="req.isDir && req.items.length === 0" class="share__box share__box__items">
         <h2 class="message">
-          <i class="material-icons">sentiment_dissatisfied</i>
-          <span>{{ $t('files.lonely') }}</span>
+          <i class="material-icons">not_interested</i>
+          <span>{{ $t('files.empty') }}</span>
         </h2>
       </div>
     </div>

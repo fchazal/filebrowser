@@ -11,8 +11,8 @@
     <main>
       <router-link v-for="user in users" :key="user.id" :to="'/users/' + user.id" class="div">
         <i v-if="user.perm.admin" class="material-icons" style="color: #d44">verified_user</i><i v-else class="material-icons">account_circle</i>
-        {{ user.username }}
-        <small>{{ user.scope }}</small>
+        <div class="name">{{ user.username }}</div>
+        <div class="scope">{{ user.scope }}</div>
       </router-link>
     </main>
   </article>

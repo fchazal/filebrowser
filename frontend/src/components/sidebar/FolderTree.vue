@@ -88,6 +88,8 @@ export default {
           name: item.name,
           url: item.url
         })
+
+        this.items.sort((a,b) => a.name.localeCompare(b.name))
       }
     },
     next: function (event) {

@@ -7,7 +7,9 @@
 
       <template v-if="!isMobile">
         <img :src="logoURL" :alt="name">
-        <h1>{{ name }}</h1>
+        <router-link to="/files">
+          <h1>{{ name }}</h1>
+        </router-link>
       </template>
     </div>
 

@@ -17,7 +17,8 @@
     <i :class="'icon material-icons ' + type">{{ icon }}</i>
     <p class="name">{{ name }}</p>
 
-    <p class="modified">
+    <p v-if="isDir" class="modified" data-order="-1">&mdash;</p>
+    <p v-else class="modified">
       <time :datetime="modified">{{ humanTime() }}</time>
     </p>
 

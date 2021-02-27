@@ -50,6 +50,7 @@
     "notFound": "This location can't be reached."
   },
   "files": {
+    "empty": "Nothing found here...",
     "body": "Body",
     "clear": "Clear",
     "closePreview": "Close preview",

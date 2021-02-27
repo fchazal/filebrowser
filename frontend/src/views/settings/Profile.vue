@@ -64,7 +64,7 @@ export default {
       hideDotfiles: false,
       singleClick: false,
       locale: '',
-      me: {}
+      me: { perm: {}}
     }
   },
   computed: {
@@ -84,17 +84,16 @@ export default {
     }
   },
   created () {
+    this.fetchData()
     this.locale = this.user.locale
     this.hideDotfiles = this.user.hideDotfiles
     this.singleClick = this.user.singleClick
-    this.fetchData()
   },
   methods: {
     ...mapMutations([ 'updateUser' ]),
      async fetchData () {
       const id = this.user.id
       this.me = { ...await api.get(id) }
-      console.log(this.me)
     },
     async updatePassword (event) {
       event.preventDefault()
@@ -112,14 +111,13 @@ export default {
         this.$showError(e)
       }
     },
-    async updateSettings (event) {
+    async save (event) {
       event.preventDefault()
 
       try {
-        const data = { id: this.user.id, locale: this.locale, hideDotfiles: this.hideDotfiles, singleClick: this.singleClick }
-        await api.update(data, ['locale', 'hideDotfiles', 'singleClick'])
-        this.updateUser(data)
-        this.$showSuccess(this.$t('settings.settingsUpdated'))
+        await api.update(this.me)
+        this.updateUser(this.me)
+        this.$showSuccess(this.$t('settings.userUpdated'))
       } catch (e) {
         this.$showError(e)
       }

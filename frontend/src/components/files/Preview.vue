@@ -7,8 +7,6 @@
 
       <div class="title">{{ this.name }}</div>
 
-      <preview-size-button v-show="false" v-if="isResizeEnabled && this.req.type === 'image'" @change-size="toggleSize" v-bind:size="fullSize" :disabled="loading"></preview-size-button>
-
       <download-button :disabled="loading" v-if="user.perm.download"></download-button>
 
       <button @click="openMore" id="more" :aria-label="$t('buttons.more')" :title="$t('buttons.more')" class="action">
@@ -23,7 +21,7 @@
       </div>
     </div>
 
-    <div class="loading" v-if="loading">-->
+    <div class="loading" v-if="loading">
       <svg class="spinner" viewBox="0 0 50 50">
         <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
       </svg>
@@ -69,7 +67,6 @@ import { mapState } from 'vuex'
 import url from '@/utils/url'
 import { baseURL, resizePreview } from '@/utils/constants'
 import { files as api } from '@/api'
-import PreviewSizeButton from '@/components/buttons/PreviewSize'
 import InfoButton from '@/components/buttons/Info'
 import DeleteButton from '@/components/buttons/Delete'
 import RenameButton from '@/components/buttons/Rename'
@@ -86,7 +83,6 @@ const mediaTypes = [
 export default {
   name: 'preview',
   components: {
-    PreviewSizeButton,
     InfoButton,
     DeleteButton,
     RenameButton,
@@ -242,3 +238,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>

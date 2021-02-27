@@ -1,15 +1,15 @@
 <template>
-  <div v-if="(req.numDirs + req.numFiles) == 0">
+  <main v-if="(req.numDirs + req.numFiles) == 0">
     <h2 class="message">
-      <i class="material-icons">sentiment_dissatisfied</i>
-      <span>{{ $t('files.lonely') }}</span>
+      <i class="material-icons">not_interested</i>
+      <span>{{ $t('files.empty') }}</span>
     </h2>
 
     <input style="display:none" type="file" id="upload-input" @change="uploadInput($event)" multiple>
     <input style="display:none" type="file" id="upload-folder-input" @change="uploadInput($event)" webkitdirectory multiple>
-  </div>
+  </main>
 
-  <div v-else id="listing" :class="user.viewMode">
+  <main v-else id="listing" :class="user.viewMode">
     <div class="item header">
       <p :class="{ active: nameSorted }" class="name"
         role="button"
@@ -42,39 +42,41 @@
       </p>
     </div>
 
-    <h2 v-if="req.numDirs > 0">
-      {{ $t('files.folders') }}
-    </h2>
-    <div v-if="req.numDirs > 0" class="items folders">
-      <item v-for="(item) in dirs"
-        :key="base64(item.name)"
-        v-bind:index="item.index"
-        v-bind:name="item.name"
-        v-bind:isDir="item.isDir"
-        v-bind:url="item.url"
-        v-bind:modified="item.modified"
-        v-bind:type="item.type"
-        v-bind:size="item.size">
-      </item>
-    </div>
+    <div class="content">
+      <h2 v-if="req.numDirs > 0">
+        {{ $t('files.folders') }}
+      </h2>
+      <div v-if="req.numDirs > 0" class="items folders">
+        <item v-for="(item) in dirs"
+          :key="base64(item.name)"
+          v-bind:index="item.index"
+          v-bind:name="item.name"
+          v-bind:isDir="item.isDir"
+          v-bind:url="item.url"
+          v-bind:modified="item.modified"
+          v-bind:type="item.type"
+          v-bind:size="item.size">
+        </item>
+      </div>
 
-    <h2 v-if="req.numFiles > 0">{{ $t('files.files') }}</h2>
-    <div v-if="req.numFiles > 0" class="items files">
-      <item v-for="(item) in files"
-        :key="base64(item.name)"
-        v-bind:index="item.index"
-        v-bind:name="item.name"
-        v-bind:isDir="item.isDir"
-        v-bind:url="item.url"
-        v-bind:modified="item.modified"
-        v-bind:type="item.type"
-        v-bind:size="item.size">
-      </item>
+      <h2 v-if="req.numFiles > 0">{{ $t('files.files') }}</h2>
+      <div v-if="req.numFiles > 0" class="items files">
+        <item v-for="(item) in files"
+          :key="base64(item.name)"
+          v-bind:index="item.index"
+          v-bind:name="item.name"
+          v-bind:isDir="item.isDir"
+          v-bind:url="item.url"
+          v-bind:modified="item.modified"
+          v-bind:type="item.type"
+          v-bind:size="item.size">
+        </item>
+      </div>
     </div>
 
     <input style="display:none" type="file" id="upload-input" @change="uploadInput($event)" multiple>
     <input style="display:none" type="file" id="upload-folder-input" @change="uploadInput($event)" webkitdirectory multiple>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -118,6 +120,8 @@ export default {
           files.push(item)
         }
       })
+
+      dirs.sort((a,b) => a.name.localeCompare(b.name))
 
       return { dirs, files }
     },
