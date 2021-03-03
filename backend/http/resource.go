@@ -17,7 +17,18 @@ import (
 	"github.com/filebrowser/filebrowser/v2/errors"
 	"github.com/filebrowser/filebrowser/v2/files"
 	"github.com/filebrowser/filebrowser/v2/fileutils"
+
+	"github.com/minio/minio/pkg/disk"
 )
+
+func diskUsage(path string) [2]uint64 {
+	di, err := disk.GetInfo(path)
+	if err != nil {
+		return [2]uint64{ 0, 0 }
+	}
+
+	return [2]uint64{ di.Total-di.Free , di.Total}
+}
 
 var resourceGetHandler = withUser(func(w http.ResponseWriter, r *http.Request, d *data) (int, error) {
 	log.Print(r.URL.Path)
@@ -30,10 +41,15 @@ var resourceGetHandler = withUser(func(w http.ResponseWriter, r *http.Request, d
 		ReadHeader: d.server.TypeDetectionByHeader,
 		Checker:    d,
 	})
+
 	if err != nil {
 		return errToStatus(err), err
 	}
 
+	usage := diskUsage(r.URL.Path)
+	file.DiskUsage = usage[0]
+	file.DiskTotal = usage[1]
+	
 	if file.IsDir {
 		file.Listing.Sorting = d.user.Sorting
 		file.Listing.ApplySort()

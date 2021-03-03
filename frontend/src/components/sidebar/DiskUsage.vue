@@ -1,16 +1,30 @@
 <template>
 	<div id="disk-usage">
     <div class="bar">
-      <div class="fill"></div>
+      <div class="fill" :style="width()"></div>
     </div>
-    <div class="usage">20.0 GB of 100.0 GB used</div>
+    <div class="usage">{{ humanSize() }}</div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import filesize from 'filesize'
+
 export default {
   name: 'disk-usage',
-  methods: {}
+  computed: {
+    ...mapState(['disk'])
+  },
+  methods: {
+    width: function () {
+      let percent = (this.disk.total) ? Math.round(100 * this.disk.usage / this.disk.total) : 0
+      return 'width: ' + percent + '%'
+    },
+    humanSize: function () {
+      return filesize(this.disk.usage) + ' / ' + filesize(this.disk.total)
+    },
+  }
 }
 </script>
 
@@ -25,7 +39,6 @@ export default {
     background-color: var(--main-color-1);
   }
   .fill {
-    width: 20%;
     height: 100%;
     background: var(--accent-color);
   }

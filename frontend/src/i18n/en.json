@@ -243,7 +243,11 @@
     "users": "Users Management",
     "shares": "Shares Management",
     "settings": "Application Settings",
-    "trash": "Trash Bin"
+    "trash": "Trash Bin",
+    
+    "newFolder": "New Folder",
+    "newFile": "New file",
+    "preview": "Preview"
   },
   "success": {
     "linkCopied": "Link copied!"

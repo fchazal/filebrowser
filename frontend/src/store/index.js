@@ -25,7 +25,11 @@ const state = {
   showMessage: null,
   showConfirm: null,
   previewMode: false,
-  hash: ''
+  hash: '',
+  disk: {
+    usage: 0,
+    total: 0
+  }
 }
 
 export default new Vuex.Store({

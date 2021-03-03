@@ -25,6 +25,13 @@ export async function fetch (url) {
       })
     }
 
+    if (data.diskTotal) {
+      store.commit('updateDisk', {
+        usage: data.diskUsage,
+        total: data.diskTotal
+      })
+    }
+
     return data
   } else {
     throw new Error(res.status)

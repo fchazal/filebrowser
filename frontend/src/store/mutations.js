@@ -88,6 +88,7 @@ const mutations = {
     state.previewMode = value
   },
   setHash: (state, value) => (state.hash = value),
+  updateDisk: (state, disk) => (state.disk = disk)
 }
 
 export default mutations

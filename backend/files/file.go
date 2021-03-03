@@ -38,6 +38,8 @@ type FileInfo struct {
 	Subtitles []string          `json:"subtitles,omitempty"`
 	Content   string            `json:"content,omitempty"`
 	Checksums map[string]string `json:"checksums,omitempty"`
+	DiskUsage uint64						`json:"diskUsage"`
+	DiskTotal	uint64						`json:"diskTotal"`
 }
 
 // FileOptions are the options when getting a file info.
