@@ -19,8 +19,8 @@ import (
 
 	"github.com/spf13/afero"
 
-	"github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/rules"
+	"github.com/fchazal/filebrowser/errors"
+	"github.com/fchazal/filebrowser/rules"
 )
 
 // FileInfo describes a file.
@@ -38,8 +38,8 @@ type FileInfo struct {
 	Subtitles []string          `json:"subtitles,omitempty"`
 	Content   string            `json:"content,omitempty"`
 	Checksums map[string]string `json:"checksums,omitempty"`
-	DiskUsage uint64						`json:"diskUsage"`
-	DiskTotal	uint64						`json:"diskTotal"`
+	DiskUsage uint64            `json:"diskUsage"`
+	DiskTotal uint64            `json:"diskTotal"`
 }
 
 // FileOptions are the options when getting a file info.

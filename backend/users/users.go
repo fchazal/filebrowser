@@ -6,9 +6,9 @@ import (
 
 	"github.com/spf13/afero"
 
-	"github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/files"
-	"github.com/filebrowser/filebrowser/v2/rules"
+	"github.com/fchazal/filebrowser/errors"
+	"github.com/fchazal/filebrowser/files"
+	"github.com/fchazal/filebrowser/rules"
 )
 
 // ViewMode describes a view mode.
@@ -25,6 +25,7 @@ type User struct {
 	Username     string        `storm:"unique" json:"username"`
 	Password     string        `json:"password"`
 	Scope        string        `json:"scope"`
+	AbsScope     string        `json:"-"`
 	Locale       string        `json:"locale"`
 	LockPassword bool          `json:"lockPassword"`
 	ViewMode     ViewMode      `json:"viewMode"`
@@ -106,6 +107,7 @@ func (u *User) Clean(baseScope string, fields ...string) error {
 			scope = filepath.Join(baseScope, scope)
 		}
 
+		u.AbsScope = scope
 		u.Fs = afero.NewBasePathFs(afero.NewOsFs(), scope)
 	}
 

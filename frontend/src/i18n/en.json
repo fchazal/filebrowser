@@ -3,20 +3,18 @@
     "profile": "User profile",
     "logout": "Logout"
   },
+
   "buttons": {
-    "addRule": "Add new rule",
+    "download": "Download",
+    "delete": "Delete",
     "cancel": "Cancel",
     "close": "Close",
-    "copy": "Copy",
+    "addRule": "Add new rule",
     "copyFile": "Copy file",
     "copyToClipboard": "Copy to clipboard",
     "create": "Create",
-    "delete": "Delete",
-    "download": "Download",
     "hideDotfiles": "Hide dotfiles",
-    "info": "Info",
     "more": "More",
-    "move": "Move",
     "moveFile": "Move file",
     "new": "New",
     "next": "Next",
@@ -24,17 +22,14 @@
     "permalink": "Get Permanent Link",
     "previous": "Previous",
     "publish": "Publish",
-    "rename": "Rename",
-    "replace": "Replace",
+
     "reportIssue": "Report Issue",
     "save": "Save",
     "schedule": "Schedule",
     "search": "Search",
     "select": "Select",
     "selectMultiple": "Select multiple",
-    "share": "Share",
     "shell": "Toggle shell",
-    "switchView": "Switch view",
     "toggleSidebar": "Toggle sidebar",
     "update": "Update",
     "upload": "Upload"
@@ -53,20 +48,37 @@
     "empty": "Nothing found here...",
     "body": "Body",
     "clear": "Clear",
-    "closePreview": "Close preview",
+
     "files": "Files",
     "folders": "Folders",
+
     "home": "My Drive",
-    "lastModified": "Last modified",
     "loading": "Loading...",
-    "lonely": "It feels lonely here...",
-    "metadata": "Metadata",
-    "multipleSelectionEnabled": "Multiple selection enabled",
+    
     "name": "Name",
+    "lastModified": "Last modified",
     "size": "Size",
-    "sortByLastModified": "Sort by last modified",
+
     "sortByName": "Sort by name",
-    "sortBySize": "Sort by size"
+    "sortByLastModified": "Sort by last modified",
+    "sortBySize": "Sort by size",
+
+    "actions": {
+      "preview": "Preview",
+      "copy": "Copy",
+      "delete": "Delete",
+      "download": "Download",
+      "info": "Info",
+      "move": "Move",
+      "rename": "Rename",
+      "replace": "Replace",
+      "share": "Share",
+      "switchView": "Switch view"  
+    },
+
+    "preview": {
+      "close": "Close preview"
+    }
   },
   "help": {
     "click": "select file or directory",
@@ -244,7 +256,7 @@
     "shares": "Shares Management",
     "settings": "Application Settings",
     "trash": "Trash Bin",
-    
+
     "newFolder": "New Folder",
     "newFile": "New file",
     "preview": "Preview"

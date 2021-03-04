@@ -1,7 +1,7 @@
 <template>
-  <button @click="show" :aria-label="$t('buttons.share')" :title="$t('buttons.share')" class="action">
+  <button @click="show" :aria-label="$t('files.actions.share')" :title="$t('files.actions.share')" class="action">
     <i class="material-icons">link</i>
-    <span>{{ $t('buttons.share') }}</span>
+    <span>{{ $t('files.actions.share') }}</span>
   </button>
 </template>
 

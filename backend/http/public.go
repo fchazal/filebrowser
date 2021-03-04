@@ -8,7 +8,7 @@ import (
 
 	"github.com/spf13/afero"
 
-	"github.com/filebrowser/filebrowser/v2/files"
+	"github.com/fchazal/filebrowser/files"
 )
 
 var withHashFile = func(fn handleFunc) handleFunc {

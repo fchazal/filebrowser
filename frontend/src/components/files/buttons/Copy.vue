@@ -1,7 +1,7 @@
 <template>
-  <button @click="show" :aria-label="$t('buttons.copy')" :title="$t('buttons.copy')" class="action" id="copy-button">
+  <button @click="show" :aria-label="$t('files.actions.copy')" :title="$t('files.actions.copy')" class="action" id="copy-button">
     <i class="material-icons">content_copy</i>
-    <span>{{ $t('buttons.copyFile') }}</span>
+    <span>{{ $t('files.actions.copy') }}</span>
   </button>
 </template>
 

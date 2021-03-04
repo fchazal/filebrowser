@@ -1,4 +1,4 @@
-module github.com/filebrowser/filebrowser/v2
+module github.com/fchazal/filebrowser
 
 require (
 	github.com/DataDog/zstd v1.4.0 // indirect
@@ -10,8 +10,6 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/disintegration/imaging v1.6.2
 	github.com/dsnet/compress v0.0.1 // indirect
-	github.com/dustin/go-humanize v1.0.0
-	github.com/golang/snappy v0.0.1 // indirect
 	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/websocket v1.4.2
 	github.com/maruel/natural v0.0.0-20180416170133-dbcb3e2e8cf1

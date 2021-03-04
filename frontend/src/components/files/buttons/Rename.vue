@@ -1,7 +1,7 @@
 <template>
-  <button @click="show" :aria-label="$t('buttons.rename')" :title="$t('buttons.rename')" class="action" id="rename-button">
+  <button @click="show" :aria-label="$t('files.actions.rename')" :title="$t('files.actions.rename')" class="action" id="rename-button">
     <i class="material-icons">mode_edit</i>
-    <span>{{ $t('buttons.rename') }}</span>
+    <span>{{ $t('files.actions.rename') }}</span>
   </button>
 </template>
 

@@ -11,28 +11,15 @@
       </div>
 
       <div id="actions">
-        <div v-if="!isListing || !isMobile">
-          <share-button v-show="showShareButton"></share-button>
-          <rename-button v-show="showRenameButton"></rename-button>
-          <copy-button v-show="showCopyButton"></copy-button>
-          <move-button v-show="showMoveButton"></move-button>
-          <download-button v-show="showDownloadButton"></download-button>
-          <delete-button v-show="showDeleteButton"></delete-button>
-        </div>
+        <share-button v-show="showShareButton"></share-button>
 
-        <div v-show="showCreate">
-          <button @click="$store.commit('showHover', 'newFile')" class="action" :aria-label="$t('sidebar.newFile')" :title="$t('sidebar.newFile')">
-            <i class="material-icons">note_add</i>
-            <span>{{ $t('sidebar.newFile') }}</span>
-          </button>
+        <button v-show="showCreate" @click="$store.commit('showHover', 'newDir')" class="action" :aria-label="$t('sidebar.newFolder')" :title="$t('sidebar.newFolder')">
+          <i class="material-icons">create_new_folder</i>
+          <span>{{ $t('sidebar.newFolder') }}</span>
+        </button>
 
-          <button @click="$store.commit('showHover', 'newDir')" class="action" :aria-label="$t('sidebar.newFolder')" :title="$t('sidebar.newFolder')">
-            <i class="material-icons">create_new_folder</i>
-            <span>{{ $t('sidebar.newFolder') }}</span>
-          </button>
-
-          <download-button></download-button>
-        </div>
+        <download-button v-show="showDownloadButton"></download-button>
+        <delete-button v-show="showDeleteButton"></delete-button>
 
         <div class="separator"></div>
 
@@ -43,27 +30,13 @@
       </div>
     </header>
 
-    <div id="dropdown" class="inactive">
+    <div id="menu" class="inactive">
       <button class="action" :aria-label="$t('sidebar.preview')" :title="$t('sidebar.preview')">
         <i class="material-icons">remove_red_eye</i>
-        <span>{{ $t('sidebar.preview') }}</span>
+        <span>{{ $t('files.actions.preview') }}</span>
       </button>
 
       <div class="separator"></div>
-
-      <div v-show="showCreate">
-        <button @click="$store.commit('showHover', 'newFile')" class="action" :aria-label="$t('sidebar.newFile')" :title="$t('sidebar.newFile')">
-          <i class="material-icons">note_add</i>
-          <span>{{ $t('sidebar.newFile') }}</span>
-        </button>
-
-        <button @click="$store.commit('showHover', 'newDir')" class="action" :aria-label="$t('sidebar.newFolder')" :title="$t('sidebar.newFolder')">
-          <i class="material-icons">create_new_folder</i>
-          <span>{{ $t('sidebar.newFolder') }}</span>
-        </button>
-
-        <div class="separator"></div>
-      </div>
 
       <share-button v-show="showShareButton"></share-button>
 
@@ -105,14 +78,14 @@ import Listing from '@/components/files/Listing'
 import { files as api } from '@/api'
 import { mapGetters, mapState, mapMutations } from 'vuex'
 
-import InfoButton from '@/components/buttons/Info'
-import DeleteButton from '@/components/buttons/Delete'
-import RenameButton from '@/components/buttons/Rename'
-import DownloadButton from '@/components/buttons/Download'
-import SwitchButton from '@/components/buttons/SwitchView'
-import MoveButton from '@/components/buttons/Move'
-import CopyButton from '@/components/buttons/Copy'
-import ShareButton from '@/components/buttons/Share'
+import InfoButton from '@/components/files/buttons/Info'
+import DeleteButton from '@/components/files/buttons/Delete'
+import RenameButton from '@/components/files/buttons/Rename'
+import DownloadButton from '@/components/files/buttons/Download'
+import SwitchButton from '@/components/files/buttons/SwitchView'
+import MoveButton from '@/components/files/buttons/Move'
+import CopyButton from '@/components/files/buttons/Copy'
+import ShareButton from '@/components/files/buttons/Share'
 
 function clean (path) {
   return path.endsWith('/') ? path.slice(0, -1) : path

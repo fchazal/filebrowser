@@ -255,3 +255,42 @@ article#files {
     box-shadow: 1px 1px 4px var(--shadow-color);
   }
 }
+
+
+#menu.inactive {
+  display: none;
+}
+#menu.active {
+	position: fixed;
+	z-index: 99999;
+	flex-direction: column;
+
+	padding: 0.6em 0;
+	border-radius: 0.5em;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0,0,0,.2);
+
+	.separator {
+		border-top: 1px solid rgba(0,0,0,0.1);
+		margin: 0.5em 0;
+	}
+
+	.action {
+		display: flex;
+    align-items: center;
+    width: 20em;
+		padding: 0 1em;
+		border-radius: 0;
+		
+		i {
+			color: --main-color;
+			padding: .2em .4em;
+		}
+
+		i+span { display: block !important }
+
+		&:hover {
+			background-color: rgba(0,0,0,.1);
+		}
+	}
+}

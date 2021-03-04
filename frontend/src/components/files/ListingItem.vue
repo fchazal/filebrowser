@@ -180,7 +180,7 @@ export default {
     click (event) {
       if (this.selectedCount !== 0) event.preventDefault()
 
-      let elt = document.getElementById('dropdown')
+      let elt = document.getElementById('menu')
       elt.classList.remove('active')
       elt.classList.add('inactive')
 
@@ -218,7 +218,7 @@ export default {
         this.click(event)
 
       event.preventDefault()
-      let elt = document.getElementById('dropdown')
+      let elt = document.getElementById('menu')
       elt.style.top = event.clientY+'px'
       elt.style.left = event.clientX+'px'
       elt.classList.remove('inactive')

@@ -5,8 +5,8 @@ import (
 
 	"github.com/asdine/storm"
 
-	"github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/users"
+	"github.com/fchazal/filebrowser/errors"
+	"github.com/fchazal/filebrowser/users"
 )
 
 type usersBackend struct {

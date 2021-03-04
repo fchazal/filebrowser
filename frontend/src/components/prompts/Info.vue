@@ -60,10 +60,10 @@ export default {
     },
     humanTime: function () {
       if (this.selectedCount === 0) {
-        return moment(this.req.modified).fromNow()
+        return moment(this.req.modified).format('DD MMM YYYY')//.fromNow()
       }
 
-      return moment(this.req.items[this.selected[0]]).fromNow()
+      return moment(this.req.items[this.selected[0]]).format('DD MMM YYYY')//.fromNow()
     },
     name: function () {
       return this.selectedCount === 0 ? this.req.name : this.req.items[this.selected[0]].name

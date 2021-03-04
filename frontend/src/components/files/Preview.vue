@@ -1,7 +1,7 @@
 <template>
   <div id="previewer">
     <div class="bar">
-      <button @click="back" class="action" :title="$t('files.closePreview')" :aria-label="$t('files.closePreview')" id="close">
+      <button @click="back" class="action" :title="$t('files.preview.close')" :aria-label="$t('files.closePreview')" id="close">
         <i class="material-icons">arrow_back</i>
       </button>
 
@@ -13,7 +13,7 @@
         <i class="material-icons">more_vert</i>
       </button>
 
-      <div id="dropdown" v-show="false" :class="{ active : showMore }">
+      <div id="menu" v-show="false" :class="{ active : showMore }">
         <rename-button :disabled="loading" v-if="user.perm.rename"></rename-button>
         <delete-button :disabled="loading" v-if="user.perm.delete"></delete-button>
         <download-button :disabled="loading" v-if="user.perm.download"></download-button>
@@ -67,10 +67,10 @@ import { mapState } from 'vuex'
 import url from '@/utils/url'
 import { baseURL, resizePreview } from '@/utils/constants'
 import { files as api } from '@/api'
-import InfoButton from '@/components/buttons/Info'
-import DeleteButton from '@/components/buttons/Delete'
-import RenameButton from '@/components/buttons/Rename'
-import DownloadButton from '@/components/buttons/Download'
+import InfoButton from '@/components/files/buttons/Info'
+import DeleteButton from '@/components/files/buttons/Delete'
+import RenameButton from '@/components/files/buttons/Rename'
+import DownloadButton from '@/components/files/buttons/Download'
 import ExtendedImage from './ExtendedImage'
 /*
 const mediaTypes = [

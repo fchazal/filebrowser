@@ -11,9 +11,9 @@ import (
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/dgrijalva/jwt-go/request"
 
-	"github.com/filebrowser/filebrowser/v2/errors"
-	"github.com/filebrowser/filebrowser/v2/users"
-	"github.com/filebrowser/filebrowser/v2/rules"
+	"github.com/fchazal/filebrowser/errors"
+	"github.com/fchazal/filebrowser/rules"
+	"github.com/fchazal/filebrowser/users"
 )
 
 const (
@@ -29,7 +29,7 @@ type userInfo struct {
 	Commands     []string          `json:"commands"`
 	LockPassword bool              `json:"lockPassword"`
 	HideDotfiles bool              `json:"hideDotfiles"`
-	Drives       []rules.Drive		 `json:"drives"`
+	Drives       []rules.Drive     `json:"drives"`
 }
 
 type authToken struct {
@@ -181,7 +181,7 @@ func printToken(w http.ResponseWriter, _ *http.Request, d *data, user *users.Use
 			LockPassword: user.LockPassword,
 			Commands:     user.Commands,
 			HideDotfiles: user.HideDotfiles,
-			Drives:				user.Drives,
+			Drives:       user.Drives,
 		},
 		StandardClaims: jwt.StandardClaims{
 			IssuedAt:  time.Now().Unix(),
